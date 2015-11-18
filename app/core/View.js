@@ -6,10 +6,8 @@ _.extend(View.prototype, {
 
   tagName: 'div',
   tpl: null,
-
-  render: function () {
-    return this;
-  },
+  timingAnimationIntro: 0,
+  timingAnimationOutro: 0,
 
   load: function (data) {
 
@@ -18,13 +16,20 @@ _.extend(View.prototype, {
     $.ajax({
       url: "views/" + this.tpl + ".hbs",
     }).done(function (hbs) {
+      
       var tpl = Handlebars.compile(hbs);  
       $(self.tagName).html(tpl(data));
     });
   },
 
   render: function (data) {
-    return this.load(data);
+    var self = this;
+
+    console.log(self.timingAnimationIntro)
+
+    return setTimeout(function(){
+      self.load(data);
+    }, self.timingAnimationIntro);
   }
 });
 

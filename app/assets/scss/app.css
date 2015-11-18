@@ -1,0 +1,64 @@
+@import 'reset.css';
+
+$bodoni: "Bodoni BE";
+$OldStandard: "Old Standard TT";
+
+html, body{
+  height: 100%;
+  background-color: #000;
+}
+
+body{
+  background-image: url("../img/bg.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.open-title{
+  width: 900px;
+  margin: 0 auto;
+  padding-top: 200px;
+  text-align: center;
+  p{
+    font-family: $OldStandard;
+    color:  rgba(236, 236, 236, 0.8);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center;
+  }
+}
+
+.btn{
+  border: 1px solid #ffffff;
+  text-align: center;
+  background-color: transparent;
+  margin-top: 50px;
+  display: inline-block;
+  &.experiment{
+    background-color: transparent;
+    padding: 40px 50px;
+    font-family: $bodoni;
+    color:  #ffffff;
+    font-size: 22px;
+    font-weight: 300;
+    position: relative;
+    z-index: 10;
+    text-transform: uppercase;
+    &:before{
+      content: "";
+      z-index: 8;
+      display: inline-block;
+      position: absolute;
+      left: -8px; top: -4px;
+      height: 100%; width: 100%;
+      border: 1px solid rgba(#fff, 0.5);
+    }
+  }
+}

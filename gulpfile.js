@@ -1,5 +1,18 @@
 var gulp = require('gulp');
 var useref = require('gulp-useref');
+var plumber = require('gulp-plumber');
+var atImport = require("postcss-import");
+
+var postcss = require('gulp-postcss');
+var processors = [
+  atImport(),
+  require('postcss-hexrgba'),
+  require('postcss-mixins'),
+  require('postcss-simple-vars'),
+  require('postcss-nested'),
+  require('cssnano'),
+  require('autoprefixer-core')({ browsers: ['last 2 versions', '> 2%'] })
+];
 
 /**
  * BrowserSync
@@ -17,6 +30,10 @@ gulp.task('html', function () {
     }));
 });
 
+/**
+*  Handlebars
+*  views
+*/
 gulp.task('hbs', function () {
   return gulp.src('app/views/*.hbs')
     .pipe(gulp.dest('client/views'))
@@ -25,6 +42,18 @@ gulp.task('hbs', function () {
     }));
 });
 
+gulp.task('scss', function () {
+  gulp.src('app/assets/scss/app.css')
+    .pipe(plumber())
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('client/css'))
+    .pipe(browserSync.stream());
+});
+
+/**
+*  Watch
+*  for reload
+*/
 gulp.task('watch', function ()  {
 
   browserSync.init({
@@ -37,5 +66,6 @@ gulp.task('watch', function ()  {
   gulp.watch("app/bootstrap.js", ['html']);
   gulp.watch("app/core/**/*.js", ['html']);
   gulp.watch("app/views/**/*.hbs", ['hbs']);
+  gulp.watch("app/assets/scss/**/*.css", ['scss']);
 
 });

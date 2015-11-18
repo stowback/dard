@@ -17,8 +17,17 @@
   },
   "homepage": "https://github.com/stowback/dard#readme",
   "devDependencies": {
+    "autoprefixer-core": "^6.0.1",
     "browser-sync": "^2.10.0",
+    "cssnano": "^3.3.2",
     "gulp": "^3.9.0",
-    "gulp-useref": "^3.0.0"
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-useref": "^3.0.0",
+    "postcss-hexrgba": "^0.2.0",
+    "postcss-import": "^7.1.3",
+    "postcss-mixins": "^2.1.1",
+    "postcss-nested": "^1.0.0",
+    "postcss-simple-vars": "^1.1.0"
   }
 }
