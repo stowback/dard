@@ -1,13 +1,13 @@
-#### Daredevil experiment
+# Daredevil experiment
 
-### Installation
+#### Installation
 
-## Prérequis
+##### Prérequis
 * Node
 * Bower
 * Un ordinateur
 
-## Install
+##### Install
 * git clone https://github.com/stowback/dard.git
 * cd dard
 * npm install
