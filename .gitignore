@@ -1,0 +1,5 @@
+.DS_Store
+
+/app/vendors
+/client
+/node_modules

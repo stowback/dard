@@ -1,0 +1,24 @@
+{
+  "name": "daredevil",
+  "version": "0.0.1",
+  "description": "Daredevil Experience",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stowback/dard.git"
+  },
+  "author": "Arnaud Allouis, Evan Peuvergne, Romain Lapi, Louis Piechowiak, Morgane Le Saout, Cedric Pereira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stowback/dard/issues"
+  },
+  "homepage": "https://github.com/stowback/dard#readme",
+  "devDependencies": {
+    "browser-sync": "^2.10.0",
+    "gulp": "^3.9.0",
+    "gulp-useref": "^3.0.0"
+  }
+}
