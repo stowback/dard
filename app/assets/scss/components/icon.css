@@ -1,0 +1,9 @@
+i{
+  display: inline-block;
+  &.pin{
+    background-image: url("../img/fa-map-marker.png");
+    width: 11px; height: 16px;
+    background-size: cover;
+    vertical-align: middle;
+  }
+}

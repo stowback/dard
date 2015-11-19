@@ -1,7 +1,7 @@
 @import 'reset.css';
+@import 'components/icon.css';
 
-$bodoni: "Bodoni BE";
-$OldStandard: "Old Standard TT";
+$brandon: 'Brandon Grotesque';
 
 html, body{
   height: 100%;
@@ -41,7 +41,6 @@ a{
   padding-top: 200px;
   text-align: center;
   p{
-    font-family: $OldStandard;
     color:  rgba(236, 236, 236, 0.8);
     font-size: 22px;
     font-weight: 400;
@@ -59,7 +58,6 @@ a{
   &.experiment{
     background-color: transparent;
     padding: 40px 50px;
-    font-family: $bodoni;
     color:  #ffffff;
     font-size: 22px;
     font-weight: 300;
@@ -81,13 +79,27 @@ a{
 .game{
   #app{
     background-image: url('../img/bg_game.png');
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 75px;
+    position: relative;
   }
-  .street{
-    font-family: BrandonGrotesque;
+  .street, .logo{
+    font-family: $brandon;
     color:  #888888;
     font-size: 16px;
     font-weight: 300;
     line-height: 42px;
     text-transform: uppercase;
+    width: 50%;
+  }
+  header.top{
+    display: flex;
+    .street{
+      text-align: right;
+      span{
+        margin-left: 10px;
+      }
+    }
   }
 }
