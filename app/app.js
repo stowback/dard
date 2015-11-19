@@ -15,6 +15,10 @@ $(function () {
     new tutoView();
   });
 
+  router.add(/game/, function () {
+    new gameView();
+  });
+
   router.add(function () {
     console.log("test")
   });
@@ -35,10 +39,18 @@ $(function () {
   
     tagName: '#app',
     tpl: 'tuto',
-    timingAnimationIntro: 3000,
+    timingAnimationIntro: 1000,
 
     initialize: function () {
       this.render();
     }
+  });
+
+  var gameView = YoloJS.View.extend({
+
+    tagName: '#app',
+    tpl: 'game',
+    timingAnimationIntro: 1000,
+    bodyClass: 'game'
   });
 });

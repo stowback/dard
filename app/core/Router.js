@@ -3,6 +3,7 @@ var Router = YoloJS.Router = function () {
   this.routes = [];
   this.mode = null;
   this.root = '/';
+  this.updated = false;
 };
 
 _.extend(Router.prototype, {
@@ -52,8 +53,10 @@ _.extend(Router.prototype, {
     var self = this;
 
     var current = self.getFragment();
+
     var fn = function() {
-      if(current !== self.getFragment()) {
+      if(current !== self.getFragment() || !self.updated) {
+        self.updated = true;
         current = self.getFragment();
         self.check(current);
       }

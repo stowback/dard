@@ -54,7 +54,7 @@ gulp.task('scss', function () {
 *  Watch
 *  for reload
 */
-gulp.task('watch', function ()  {
+gulp.task('watch', ['html', 'hbs', 'scss'], function ()  {
 
   browserSync.init({
     server: {
@@ -64,6 +64,7 @@ gulp.task('watch', function ()  {
 
   gulp.watch("app/index.html", ['html']);
   gulp.watch("app/bootstrap.js", ['html']);
+  gulp.watch("app/app.js", ['html']);
   gulp.watch("app/core/**/*.js", ['html']);
   gulp.watch("app/views/**/*.hbs", ['hbs']);
   gulp.watch("app/assets/scss/**/*.css", ['scss']);

@@ -8,6 +8,11 @@ _.extend(View.prototype, {
   tpl: null,
   timingAnimationIntro: 0,
   timingAnimationOutro: 0,
+  bodyClass: null,
+
+  initialize: function () {
+    this.render();
+  },
 
   load: function (data) {
 
@@ -23,13 +28,19 @@ _.extend(View.prototype, {
   },
 
   render: function (data) {
+    
     var self = this;
 
-    console.log(self.timingAnimationIntro)
-
     return setTimeout(function(){
+      self.setBodyClass();
       self.load(data);
     }, self.timingAnimationIntro);
+  },
+
+  setBodyClass: function () {
+    if (this.bodyClass) {
+      $('body').removeClass().addClass(this.bodyClass);
+    };
   }
 });
 
