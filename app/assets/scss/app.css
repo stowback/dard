@@ -66,8 +66,11 @@ a{
 .open-title{
   width: 900px;
   margin: 0 auto;
-  padding-top: 200px;
+  padding-top: 100px;
   text-align: center;
+  img.logo-home{
+    width: 400px;
+  }
   p{
     color:  rgba(236, 236, 236, 0.8);
     font-size: 22px;
@@ -84,6 +87,36 @@ a{
   margin-top: 50px;
   display: inline-block;
   &.experiment{
+    border:none;
+    position: relative;
+    font-family: $brandon;
+    color:  #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    z-index: 10;
+    &:before, &:after{
+      transition-duration: 0.5s;
+      height: 2px; width: 30%;
+      content: "";
+      background-color: #cb2228;
+      position: absolute;
+      top: 45%;
+      z-index: 5;
+    }
+    &:before{
+      left:-50%;
+    }
+    &:after{
+      right:-50%;
+    }
+    &:hover{
+      &:after, &:before{
+        width: 100%;
+      }
+    }
+  }
+  &.experiment-old{
     background-color: transparent;
     padding: 40px 50px;
     color:  #ffffff;
@@ -182,5 +215,25 @@ a{
         margin-bottom: 20px;
       }
     }
+  }
+}
+
+footer{
+  &.footer-home{
+    margin-top: 100px;
+    text-align: center;
+    p{
+      color:  rgba(236, 236, 236, 0.6);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 34px;
+      text-align: center;
+    }
+  }
+}
+
+.animation{
+  .fadOut{
+    
   }
 }

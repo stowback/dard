@@ -14,9 +14,36 @@ $(function () {
   router.add(/tuto/, function () {
     new tutoView();
 
-    $(document).on('lookLeft', function () {
-      console.log("left ta mere")
-    });
+    var checked = {
+      left: false,
+      right: false,
+      center: false
+    }
+
+    var count = 0;
+
+    if (!checked.left) {
+      $(document).on('lookLeft', function () {
+        count++;
+        if (!checked.right && count == 3) {
+          count = 0;
+          checked.left = true;
+          $(document).on('lookRight', function () {
+            count++;
+            if (!checked.center && count == 3) {
+              count = 0;
+              checked.right = true;
+              $(document).on('lookCenter', function () {
+                count++;
+                if (count == 3) {
+                  console.log("done :)");
+                };
+              });
+            };
+          });
+        };
+      });
+    };
   });
 
   router.add(/game/, function () {
