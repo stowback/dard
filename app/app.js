@@ -13,10 +13,16 @@ $(function () {
 
   router.add(/tuto/, function () {
     new tutoView();
+
+    $(document).on('lookLeft', function () {
+      console.log("left ta mere")
+    });
   });
 
   router.add(/game/, function () {
-    new gameView();
+    
+    var g = new gameView();
+
   });
 
   router.add(function () {
@@ -40,10 +46,7 @@ $(function () {
     tagName: '#app',
     tpl: 'tuto',
     timingAnimationIntro: 1000,
-
-    initialize: function () {
-      this.render();
-    }
+    js: ['visageSDK', 'visage', 'bezier']
   });
 
   var gameView = YoloJS.View.extend({

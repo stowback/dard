@@ -2,6 +2,42 @@ var YoloJS = function () {
   this.version = '0.0.1';
 };
 
+
+var dard = YoloJS.Daredevil = function () {
+
+}
+
+_.extend(dard.prototype, {
+  
+  process: function (faceData) {
+    if (faceData.faceRotation[1] > 0.10) {
+      $.event.trigger({
+        type: "lookLeft",
+        time: new Date()
+      });
+    } else if (faceData.faceRotation[1] <= 0.10 && faceData.faceRotation[1] >= -0.10) {
+      $.event.trigger({
+        type: "lookCenter",
+        time: new Date()
+      });
+    } else {
+      $.event.trigger({
+        type: "lookRight",
+        time: new Date()
+      });
+    }
+
+    if (faceData.eyeClosure[0] == 0 && faceData.eyeClosure[1] == 0) {
+      $.event.trigger({
+        type: "eyesClosed",
+        time: new Date()
+      });
+    }
+  }
+});
+
+var Daredevil = new dard();
+
 // Backbone extend
 var extend = function(protoProps, staticProps) {
   var parent = this;
@@ -22,3 +58,4 @@ var extend = function(protoProps, staticProps) {
 
   return child;
 };
+

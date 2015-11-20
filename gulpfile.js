@@ -50,11 +50,19 @@ gulp.task('scss', function () {
     .pipe(browserSync.stream());
 });
 
+gulp.task('visage', function () {
+  gulp.src('app/assets/js/visage/**/*')
+    .pipe(gulp.dest('client/js/visage'));
+
+  gulp.src('app/assets/visageSDK.data')
+    .pipe(gulp.dest('client'));
+});
+
 /**
 *  Watch
 *  for reload
 */
-gulp.task('watch', ['html', 'hbs', 'scss'], function ()  {
+gulp.task('watch', ['html', 'hbs', 'scss', 'visage'], function ()  {
 
   browserSync.init({
     server: {
