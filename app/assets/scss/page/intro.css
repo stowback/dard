@@ -3,11 +3,7 @@
  * style for the intro route
  */
 
-.intro{
-
-#app{
-  position: relative;
-}
+.page-intro{
 
 .video-intro {
   position: fixed;

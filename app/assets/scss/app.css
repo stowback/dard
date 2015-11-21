@@ -23,6 +23,16 @@ html, body{
   background-size: cover;
   z-index: 2;
   position: relative;
+  transition-duration: 1s;
+  .page{
+    display: none;
+    &.show{
+      display: flex;
+    }
+    &.hide{
+      opacity: 0;
+    }
+  }
 }
 
 .bg{
