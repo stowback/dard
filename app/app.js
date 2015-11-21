@@ -44,6 +44,10 @@ $(function () {
 
   });
 
+  router.add(function() {
+    new homeView();
+  });
+
   router.listen();
 
 });
