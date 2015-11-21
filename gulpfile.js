@@ -5,9 +5,9 @@ var atImport = require("postcss-import");
 
 var postcss = require('gulp-postcss');
 var processors = [
+  require('postcss-mixins'),
   atImport(),
   require('postcss-hexrgba'),
-  require('postcss-mixins'),
   require('postcss-simple-vars'),
   require('postcss-nested'),
   require('cssnano'),
@@ -78,6 +78,7 @@ gulp.task('watch', ['html', 'hbs', 'scss', 'visage'], function ()  {
   gulp.watch("app/bootstrap.js", ['html']);
   gulp.watch("app/app.js", ['html']);
   gulp.watch("app/core/**/*.js", ['html']);
+  gulp.watch("app/controller/**/*.js", ['html']);
   gulp.watch("app/views/**/*.hbs", ['hbs']);
   gulp.watch("app/assets/scss/**/*.css", ['scss']);
 

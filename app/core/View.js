@@ -64,6 +64,7 @@ _.extend(View.prototype, {
       self.setPageClass();
       self.app.apply(self, arguments);
     });
+    
     self.loadJS(function (res) {
       console.log("loaded")
     });
