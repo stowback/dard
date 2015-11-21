@@ -41,7 +41,11 @@ $(function () {
   router.add(/game/, function () {
     
     var g = new gameView();
+  });
 
+  router.add(/configuration/, function () {
+
+    new configurationView();
   });
 
   router.add(function() {
