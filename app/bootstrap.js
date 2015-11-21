@@ -1,4 +1,5 @@
 var YoloJS = function () {
+
   this.version = '0.0.1';
 };
 
@@ -8,6 +9,8 @@ var dard = YoloJS.Daredevil = function () {
 }
 
 _.extend(dard.prototype, {
+
+  previousPage: null,
   
   process: function (faceData) {
     if (faceData.faceRotation[1] > 0.10) {
