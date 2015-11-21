@@ -23,6 +23,7 @@ var reload = browserSync.reload;
 
 gulp.task('html', function () {
   return gulp.src('app/*.html')
+    .pipe(plumber())
     .pipe(useref())
     .pipe(gulp.dest('client'))
     .pipe(reload({
@@ -36,6 +37,7 @@ gulp.task('html', function () {
 */
 gulp.task('hbs', function () {
   return gulp.src('app/views/*.hbs')
+    .pipe(plumber())
     .pipe(gulp.dest('client/views'))
     .pipe(reload({
       stream: true
@@ -52,9 +54,11 @@ gulp.task('scss', function () {
 
 gulp.task('visage', function () {
   gulp.src('app/assets/js/visage/**/*')
+    .pipe(plumber())
     .pipe(gulp.dest('client/js/visage'));
 
   gulp.src('app/assets/visageSDK.data')
+    .pipe(plumber())
     .pipe(gulp.dest('client'));
 });
 
