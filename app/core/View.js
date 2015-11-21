@@ -1,10 +1,10 @@
-var View = YoloJS.View = function (options) {
+ var View = YoloJS.View = function (options) {
 
   this.libs = new Array();
   this.libs['js'] = new Array();
-  this.libs['js']['bezier'] = 'visage/bezier-spline.js'
-  this.libs['js']['visage'] = 'visage/visage.js'
-  this.libs['js']['visageSDK'] = 'visage/visage/visageSDK.js'
+  this.libs['js']['bezier'] = 'visage/bezier-spline.js';
+  this.libs['js']['visage'] = 'visage/visage.js';
+  this.libs['js']['visageSDK'] = 'visage/visage/visageSDK.js';
 
   this.initialize.apply(this, arguments);
 };
@@ -12,6 +12,8 @@ var View = YoloJS.View = function (options) {
 _.extend(View.prototype, {
 
   tagName: 'div',
+  pageName: 'default',
+  pageDiv: $(this.tagName).find('.' + this.pageName),
   tpl: null,
   timingAnimationIntro: 0,
   timingAnimationOutro: 0,
@@ -22,23 +24,23 @@ _.extend(View.prototype, {
     this.render();
   },
 
-  loadJS: function (libs, cb) {
+  loadJS: function (cb) {
 
     var self = this;
     var count = 0;
-    _.each(libs, function (lib) {
+    _.each(self.libs, function (lib) {
       var tag = document.createElement("script");
       tag.src = 'js/' + self.libs['js'][lib];
       document.getElementsByTagName("head")[0].appendChild(tag);
       count++;
     });
 
-    if (count == libs.length) {
+    if (count == self.libs.length) {
       cb(true);
     };
   },
 
-  load: function (data) {
+  load: function (data, cb) {
 
     var self = this;
 
@@ -47,7 +49,8 @@ _.extend(View.prototype, {
     }).done(function (hbs) {
       
       var tpl = Handlebars.compile(hbs);  
-      $(self.tagName).html(tpl(data));
+      $(self.tagName).append('<div class="page page-' + self.pageName + '">' + tpl(data) + '</div>');
+      cb(null, true)
     });
   },
 
@@ -55,20 +58,43 @@ _.extend(View.prototype, {
     
     var self = this;
 
-   
-      return setTimeout(function(){
-        self.setBodyClass();
-        self.load(data);
-        self.loadJS(self.js, function (res) {
-          console.log("loaded")
-        });
-      }, self.timingAnimationIntro);
+
+
+    self.load(data, function () {
+      self.setPageClass();
+      self.app.apply(self, arguments);
+    });
+    self.loadJS(function (res) {
+      console.log("loaded")
+    });
+
+    setTimeout(function(){
+      
+      self.deleteOldPage();
+
+    }, self.timingAnimationIntro);
   },
 
-  setBodyClass: function () {
-    if (this.bodyClass) {
-      $('body').removeClass().addClass(this.bodyClass);
+  app: function () {},
+
+  setPageClass: function () {
+
+    var self = this;
+
+    if (Daredevil.previousPage != null) {
+      $('.page-' + Daredevil.previousPage).addClass('hide');
     };
+
+    $(self.tagName + ' .page-' + self.pageName).addClass('show');
+  },
+
+  deleteOldPage: function () {
+
+    var self = this;
+
+    $('.page-' + Daredevil.previousPage).remove();
+
+    Daredevil.previousPage = self.pageName;
   }
 });
 
