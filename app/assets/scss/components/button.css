@@ -1,0 +1,63 @@
+/**
+ * components/button
+ * Button style
+ */
+
+.btn{
+  border: 1px solid #ffffff;
+  text-align: center;
+  background-color: transparent;
+  margin-top: 50px;
+  display: inline-block;
+  &.experiment{
+    border:none;
+    position: relative;
+    font-family: $brandon;
+    color:  #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    z-index: 10;
+    transition-duration: 0.5s;
+    &:before, &:after{
+      transition-duration: 0.5s;
+      height: 2px; width: 30%;
+      content: "";
+      background-color: #cb2228;
+      position: absolute;
+      top: 45%;
+      z-index: 5;
+    }
+    &:before{
+      left:-50%;
+    }
+    &:after{
+      right:-50%;
+    }
+    &:hover{
+      letter-spacing: 2px;
+      &:after, &:before{
+        width: 100%;
+      }
+    }
+  }
+  &.experiment-old{
+    background-color: transparent;
+    padding: 40px 50px;
+    color:  #ffffff;
+    font-size: 22px;
+    font-weight: 300;
+    position: relative;
+    z-index: 10;
+    text-transform: uppercase;
+    &:before{
+      content: "";
+      z-index: 8;
+      display: inline-block;
+      position: absolute;
+      left: -8px; top: -4px;
+      height: 100%; width: 100%;
+      border: 1px solid rgba(#fff, 0.5);
+    }
+  }
+}

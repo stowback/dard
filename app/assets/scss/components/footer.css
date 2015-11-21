@@ -1,0 +1,13 @@
+footer{
+  &.footer-home{
+    margin-top: 100px;
+    text-align: center;
+    p{
+      color:  rgba(236, 236, 236, 0.6);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 34px;
+      text-align: center;
+    }
+  }
+}
