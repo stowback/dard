@@ -15,6 +15,10 @@ _.extend(Router.prototype, {
   },
 
   add: function (route, handler) {
+    if(typeof route == 'function') {
+      handler = route;
+      route = '';
+    }
     this.routes.push({ route: route, handler: handler});
     return this;
   },
