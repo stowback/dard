@@ -50,4 +50,6 @@ $(function () {
 
   router.listen();
 
+  Daredevil.router = router;
+
 });
