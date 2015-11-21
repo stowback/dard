@@ -754,9 +754,9 @@ function checkFrameDuplicate(newSample){
 }
 
 /*
-*Method that is called on every frame via requestAnimationFrame mechanism.
-*Draws camera image on the canvas, takes the pixel data, sends them to the tracker and finally, depending on the result, draws the results.
-*Rudimentary timing is implemented to be activated on button click and it also checks for duplicate frames.
+* Method that is called on every frame via requestAnimationFrame mechanism.
+* Draws camera image on the canvas, takes the pixel data, sends them to the tracker and finally, depending on the result, draws the results.
+* Rudimentary timing is implemented to be activated on button click and it also checks for duplicate frames.
 */
 function processFrame(){
   window.requestAnimationFrame(processFrame);
