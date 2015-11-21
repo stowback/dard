@@ -1,5 +1,4 @@
 @import 'reset.css';
-@import '../../vendors/components-font-awesome/css/font-awesome.min.css';
 
 $brandon: 'Brandon Grotesque';
 
@@ -93,7 +92,11 @@ a{
   }
 }
 
-
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 @import 'page/game';
 @import 'page/intro';
