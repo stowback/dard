@@ -1,10 +1,13 @@
 @import 'reset.css';
 
 $brandon: 'Brandon Grotesque';
+$metaSerifPro: 'serif';
 
 @import 'components/icon.css';
 @import 'components/footer';
+@import 'components/header';
 @import 'components/button';
+@import 'components/cadre';
 
 html, body{
   height: 100%;
@@ -23,10 +26,16 @@ html, body{
   z-index: 2;
   position: relative;
   transition-duration: 1s;
+  background-image: url('../img/bg_game.png');
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex;
+  align-items: center;
   .page{
     display: none;
+    width: 100%;
     &.show{
-      display: flex;
+      display: inline-block;
     }
     &.hide{
       opacity: 0;
@@ -78,7 +87,6 @@ a{
 .open-title{
   width: 900px;
   margin: 0 auto;
-  padding-top: 100px;
   text-align: center;
   img.logo-home{
     width: 400px;

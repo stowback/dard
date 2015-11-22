@@ -1,6 +1,11 @@
+/**
+ * components/footer
+ * Footer style
+ */
+
 footer{
   &.footer-home{
-    margin-top: 100px;
+    margin-top: 50px;
     text-align: center;
     p{
       color:  rgba(236, 236, 236, 0.6);

@@ -1,0 +1,18 @@
+header.top{
+  display: flex;
+  .street, .logo{
+    font-family: $brandon;
+    color:  #888888;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 42px;
+    text-transform: uppercase;
+    width: 50%;
+  }
+  .street{
+    text-align: right;
+    span{
+      margin-left: 10px;
+    }
+  }
+}
