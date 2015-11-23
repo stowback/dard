@@ -60,7 +60,9 @@ var configurationView = YoloJS.View.extend({
 
       if (selectedChoice == "webcam") {
         new webcamView();
-      };
+      } else {
+        Daredevil.router.navigate('/game');
+      }
     });
   }
 });

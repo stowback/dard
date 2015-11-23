@@ -39,8 +39,12 @@ $(function () {
   });
 
   router.add(/game/, function () {
-    
-    var g = new gameView();
+
+    if (Daredevil.map != null) {
+      new gameView(); 
+    } else {
+      new loadingGameView();
+    }
   });
 
   router.add(/configuration/, function () {

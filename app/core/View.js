@@ -5,6 +5,10 @@
   this.libs['js']['bezier'] = 'visage/bezier-spline.js';
   this.libs['js']['visage'] = 'visage/visage.js';
   this.libs['js']['visageSDK'] = 'visage/visage/visageSDK.js';
+  this.libs['js']['GameSound'] = 'sound-engine/class/Game.class.js';
+  this.libs['js']['MapSound'] = 'sound-engine/class/Map.class.js';
+  this.libs['js']['CharacterSound'] = 'sound-engine/class/Character.class.js';
+  this.libs['js']['DistrictSound'] = 'sound-engine/class/District.class.js';
 
   this.initialize.apply(this, arguments);
 };

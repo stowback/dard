@@ -11,6 +11,7 @@ var dard = YoloJS.Daredevil = function () {
 _.extend(dard.prototype, {
 
   previousPage: null,
+  map: null,
   
   process: function (faceData) {
     if (faceData.faceRotation[1] > 0.10) {

@@ -52,21 +52,23 @@ gulp.task('scss', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('visage', function () {
-  gulp.src('app/assets/js/visage/**/*')
+gulp.task('jsAssets', function () {
+
+  gulp.src('app/assets/js/**/*')
     .pipe(plumber())
-    .pipe(gulp.dest('client/js/visage'));
+    .pipe(gulp.dest('client/js'));
 
   gulp.src('app/assets/visageSDK.data')
     .pipe(plumber())
     .pipe(gulp.dest('client'));
+
 });
 
 /**
 *  Watch
 *  for reload
 */
-gulp.task('watch', ['html', 'hbs', 'scss', 'visage'], function ()  {
+gulp.task('watch', ['html', 'hbs', 'scss', 'jsAssets'], function ()  {
 
   browserSync.init({
     server: {
