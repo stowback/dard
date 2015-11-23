@@ -7,7 +7,21 @@
   border: 1px dashed rgba(#d8252c, 0.4);
   width: 1000px;
   position: relative;
+  margin: 0 auto;
   margin-top: 100px;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  text-align: center;
+  p.text{
+    font-family: $metaSerifPro;
+    color:  #a09e9f;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 28px;
+    text-align: center;
+    width: 900px;
+    margin: 0 auto;
+  }
   h3{
     color:  #d8252c;
     font-size: 24px;
@@ -83,7 +97,6 @@
     text-align: center;
     width: 900px;
     margin: 0 auto;
-    margin-bottom: 50px;
     p{
       display: none;
       &.show{

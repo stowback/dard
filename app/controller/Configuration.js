@@ -40,16 +40,27 @@ var configurationView = YoloJS.View.extend({
         if (selectedChoice != null) {
           $('.choices .choice').removeClass('selected');
           selectedChoice = null;
+          $('#configuration-btn').addClass('disabled');
           return false;
         };
 
         selectedChoice = $(this).data('help');
+
+        $('#configuration-btn').removeClass('disabled');
 
         $(this).addClass('selected');
         $('.choices-help p').removeClass('show');
         $('.choices-help p#' + selectedChoice).addClass('show');
       }
 
+    });
+
+    $('#configuration-btn').click(function () {
+      Daredevil.navigation = selectedChoice;
+
+      if (selectedChoice == "webcam") {
+        new webcamView();
+      };
     });
   }
 });

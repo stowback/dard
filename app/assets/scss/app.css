@@ -3,6 +3,7 @@
 $brandon: 'Brandon Grotesque';
 $metaSerifPro: 'serif';
 
+@import 'components/utils';
 @import 'components/icon.css';
 @import 'components/footer';
 @import 'components/header';

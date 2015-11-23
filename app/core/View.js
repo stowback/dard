@@ -18,7 +18,7 @@ _.extend(View.prototype, {
   timingAnimationIntro: 0,
   timingAnimationOutro: 0,
   bodyClass: null,
-  libs: [],
+  js: [],
 
   initialize: function () {
     this.render();
@@ -28,7 +28,7 @@ _.extend(View.prototype, {
 
     var self = this;
     var count = 0;
-    _.each(self.libs, function (lib) {
+    _.each(self.js, function (lib) {
       var tag = document.createElement("script");
       tag.src = 'js/' + self.libs['js'][lib];
       document.getElementsByTagName("head")[0].appendChild(tag);

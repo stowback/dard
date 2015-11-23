@@ -4,41 +4,51 @@
  */
 
 .btn{
-  border: 1px solid #ffffff;
+  position: relative;
   text-align: center;
   background-color: transparent;
   margin-top: 50px;
   display: inline-block;
-  &.experiment{
-    border:none;
-    position: relative;
-    font-family: $brandon;
-    color:  #fff;
-    font-size: 18px;
-    font-weight: 500;
-    text-transform: uppercase;
-    z-index: 10;
-    transition-duration: 0.5s;
-    &:before, &:after{
-      transition-duration: 0.5s;
-      height: 2px; width: 30%;
-      content: "";
-      background-color: #cb2228;
-      position: absolute;
-      top: 45%;
-      z-index: 5;
-    }
-    &:before{
-      left:-50%;
-    }
-    &:after{
-      right:-50%;
+  font-family: $brandon;
+  color:  #fff;
+  text-transform: uppercase;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  &.disabled{
+    color:#868686;
+    cursor:not-allowed;
+    &:after, &:before{
+      background-color: #868686;
+      width: 100%;
     }
     &:hover{
-      letter-spacing: 2px;
-      &:after, &:before{
-        width: 100%;
-      }
+      letter-spacing: 0px;
+    }
+  }
+  &.experiment{
+    font-size: 18px;
+    font-weight: 500;
+    z-index: 10;
+  }
+  &:before, &:after{
+    transition-duration: 0.5s;
+    height: 2px; width: 30%;
+    content: "";
+    background-color: #cb2228;
+    position: absolute;
+    top: 45%;
+    z-index: 5;
+  }
+  &:before{
+    left:-50%;
+  }
+  &:after{
+    right:-50%;
+  }
+  &:hover{
+    letter-spacing: 2px;
+    &:after, &:before{
+      width: 100%;
     }
   }
   &.experiment-old{
