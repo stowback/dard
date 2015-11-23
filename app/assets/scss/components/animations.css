@@ -1,0 +1,33 @@
+/*
+* animations.css
+* manage animations definition
+*/
+
+
+/* fade */
+
+@keyframes FadeIn { 0%{ opacity: 0; } 100%{ opacity: 1; } }
+@keyframes FadeOut { 0%{ opacity: 1; } 100%{ opacity: 0; } }
+
+
+/* slide */
+
+@keyframes SlideInDownSmall{ 0%{ opacity: 0; transform: translate3d(0, -2em, 0); }
+						100%{ opacity: 1; transform: none; } }
+@keyframes SlideOutDownSmall{ 0%{ opacity: 1; transform: none; }
+						100%{ opacity: 0; transform: translate3d(0, -2em, 0); } }
+
+@keyframes SlideInDownBig{ 0%{ opacity: 0; transform: translate3d(0, -6em, 0); }
+						100%{ opacity: 1; transform: none; } }
+@keyframes SlideOutDownBig{ 0%{ opacity: 1; transform: none; }
+						100%{ opacity: 0; transform: translate3d(0, -6em, 0); } }
+
+@keyframes SlideInUpSmall{ 0%{ opacity: 0; transform: translate3d(0, 2em, 0); }
+						100%{ opacity: 1; transform: none; } }
+@keyframes SlideOutUpSmall{ 0%{ opacity: 1; transform: none; }
+						100%{ opacity: 0; transform: translate3d(0, 2em, 0); } }
+
+
+/* Blink */
+
+@keyframes Blink { 0%{ opacity: 1; } 45%{ opacity: 1; } 55% { opacity: 0;} 95%{ opacity: 0; } }

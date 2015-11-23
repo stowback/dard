@@ -11,8 +11,9 @@
   display: inline-block;
   font-family: $brandon;
   color:  #fff;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
   cursor: pointer;
   &.disabled{
     color:#868686;
@@ -26,15 +27,15 @@
     }
   }
   &.experiment{
-    font-size: 18px;
+    font-size: 1.1em;
     font-weight: 500;
     z-index: 10;
   }
   &:before, &:after{
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
     height: 2px; width: 30%;
     content: "";
-    background-color: #cb2228;
+    background-color: $color-primary;
     position: absolute;
     top: 45%;
     z-index: 5;
@@ -46,7 +47,7 @@
     right:-50%;
   }
   &:hover{
-    letter-spacing: 2px;
+    letter-spacing: 0.3em;
     &:after, &:before{
       width: 100%;
     }

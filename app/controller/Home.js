@@ -3,5 +3,5 @@
     tagName: '#app',
     tpl: 'home',
     timingAnimationIntro: 1000,
-    pageName: 'game'
+    pageName: 'home'
   });

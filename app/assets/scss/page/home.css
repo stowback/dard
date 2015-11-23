@@ -1,0 +1,109 @@
+/**
+ * page/home
+ * style for the intro route
+ */
+
+
+/* base */
+
+.page-home{
+  background-color: #000000;
+  background-image:url(../img/background.jpg);
+  background-size: cover;
+  background-position: 50% 0px;
+
+  .home-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 250px);
+    height: calc(100% - 4em);
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    
+    img.logo-home{
+      display: inline-block;
+      width: auto;
+      height: 50%;
+      max-height: 450px;
+      margin-bottom: -2em;
+    }
+    
+    p{
+      font-family: $font-content, serif;
+      font-size: 1.1em;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      color: rgba(#fefefe, 0.8);
+      line-height: 2;
+      text-align: center;
+      margin-bottom: 0em;
+    }
+
+  }
+
+  .home-footer{
+    position: absolute;
+    bottom: 0.5em;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1em;
+    font-family: $font-titles;
+
+    p{
+      font-size: 1.15em;
+      font-weight: 400;
+      color: rgba(#fefefe, 0.5);
+      margin-top: 0.3em;
+    }
+  }
+
+}
+
+
+/* animations */
+
+.page-home{ display: none; }
+
+.page-home.show{
+  display: block;
+  animation: FadeIn 3s ease;
+  animation-fill-mode: both;
+
+  .home-content{
+    img, p, a{ 
+      animation: SlideInDownSmall 1s ease;
+      animation-delay: 0.7s;
+      animation-fill-mode: both; 
+    }
+    p{ animation-delay: 0.8s; }
+    a{ animation-delay: 0.9s; }
+  }
+
+  .home-footer{
+    animation: SlideInUpSmall 1s ease;
+    animation-delay: 2s;
+    animation-fill-mode: both;
+  }
+}
+
+.page-home.hide{
+  display: block;
+  animation: FadeOut 3s ease;
+  animation-fill-mode: both;
+
+  .home-content{
+    img, p, a{ 
+      animation: SlideOutDownSmall 1s ease;
+      animation-delay: 0.7s;
+      animation-fill-mode: both; 
+    }
+    p{ animation-delay: 0.8s; }
+    a{ animation-delay: 0.9s; }
+  }
+}

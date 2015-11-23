@@ -3,7 +3,7 @@ var introView = YoloJS.View.extend({
   tagName: '#app',
   pageName: 'intro',
   tpl: 'intro',
-  timingAnimationIntro: 1000,
+  timingAnimationIntro: 3000,
 
   app: function () {
     $page = $('.page-'+this.pageName);
@@ -14,9 +14,11 @@ var introView = YoloJS.View.extend({
       endVideoIntro();
     }
 
-    setTimeout(function () {
-      $page.find('h2').fadeIn();
-    }, 10000)
+    $('.video-intro').on('click', function (e)
+    {
+      e.preventDefault();
+      endVideoIntro();
+    });
 
     $(document).on('keyup', endVideoIntro);
   }
