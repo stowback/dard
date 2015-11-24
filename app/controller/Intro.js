@@ -8,7 +8,7 @@ var introView = YoloJS.View.extend({
   app: function () {
     $page = $('.page-'+this.pageName);
     var player = $page.find('video.video-intro').get(0);
-    setTimeout(function (){ alert('helo'); player.play(); }, 5000);
+    setTimeout(function (){ player.play(); }, 2000);
 
     player.onended = function () {
       endVideoIntro();
