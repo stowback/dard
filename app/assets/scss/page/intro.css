@@ -50,7 +50,6 @@
 
 .page.page-intro.show{
   display: block;
-  animation-name: FadeIn;
   animation: FadeIn 3s ease;
   animation-fill-mode: both;
 }

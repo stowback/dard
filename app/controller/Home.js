@@ -2,6 +2,6 @@
 
     tagName: '#app',
     tpl: 'home',
-    timingAnimationIntro: 1000,
+    timingAnimationIntro: 3000,
     pageName: 'home'
   });
