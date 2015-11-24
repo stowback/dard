@@ -67,12 +67,6 @@ html, body{
 .page{
   display: none;
   width: 100%;
-  /*&.show{
-    display: inline-block;
-  }
-  &.hide{
-    opacity: 0;
-  }*/
 }
 
 .bg{
@@ -130,3 +124,4 @@ a{
 @import 'page/home';
 @import 'page/intro';
 @import 'page/configuration';
+@import 'page/final';

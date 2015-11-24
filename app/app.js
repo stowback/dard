@@ -52,6 +52,11 @@ $(function () {
     new configurationView();
   });
 
+  router.add(/final/, function () {
+
+    new finalView();
+  });
+
   router.add(function() {
     new homeView();
   });

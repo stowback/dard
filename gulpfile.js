@@ -64,11 +64,17 @@ gulp.task('jsAssets', function () {
 
 });
 
+gulp.task('storage', function () {
+  gulp.src('storage/**/*')
+    .pipe(plumber())
+    .pipe(gulp.dest('client'));
+});
+
 /**
 *  Watch
 *  for reload
 */
-gulp.task('watch', ['html', 'hbs', 'scss', 'jsAssets'], function ()  {
+gulp.task('watch', ['html', 'hbs', 'scss', 'jsAssets', 'storage'], function ()  {
 
   browserSync.init({
     server: {

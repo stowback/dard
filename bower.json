@@ -19,6 +19,7 @@
     "jquery": "~2.1.4",
     "handlebars": "~4.0.4",
     "underscore": "~1.8.3",
-    "components-font-awesome": "~4.4.0"
+    "components-font-awesome": "~4.4.0",
+    "jquery.countdown": "~2.1.0"
   }
 }
