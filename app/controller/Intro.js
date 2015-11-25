@@ -1,3 +1,8 @@
+/**
+ * Intro ViewController
+ * /intro
+ */
+
 var introView = YoloJS.View.extend({
 
   tagName: '#app',
@@ -20,14 +25,25 @@ var introView = YoloJS.View.extend({
     $('.video-intro').on('click', function (e)
     {
       e.preventDefault();
+
       endVideoIntro();
     });
 
-    $(document).on('keyup', endVideoIntro);
+    // Start event
+    $(document).on('keyup', function () {
+      // Pause video
+      player.pause();
+
+      endVideoIntro();
+    });
   }
 });
 
 
+// End video Intro
 function endVideoIntro() {
+
+
+
   Daredevil.router.navigate('/configuration');
 }
