@@ -23,7 +23,7 @@
   }
 
   .skip-btn{
-    display: block;
+    display: none;
     position: absolute;
     bottom: 2em;
     left: 50%;
@@ -58,5 +58,10 @@
   display: block;
   animation: FadeOut 3s ease;
   animation-fill-mode: both;
+
+  .video-intro{
+    animation: FadeOut 3s ease;
+    animation-fill-mode: both;
+  }
 }
 

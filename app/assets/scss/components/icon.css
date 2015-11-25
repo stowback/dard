@@ -3,7 +3,10 @@
  * Icon style
  */
 
-i{
+
+/* base */
+
+/*i{
   display: inline-block;
   &.pin{
     background-image: url("../img/fa-map-marker.png");
@@ -11,4 +14,10 @@ i{
     background-size: cover;
     vertical-align: middle;
   }
-}
+}*/
+
+
+/* font awesome */
+
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css";
+

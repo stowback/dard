@@ -18,6 +18,8 @@ $brandon: 'Brandon Grotesque';
 $metaSerifPro: 'serif';
 
 $color-white: #fefefe;
+$color-white-lte: rgba(#fefefe, 0.5);
+
 $color-primary: #8c1329;
 
 $font-size-base: 14px;
@@ -49,24 +51,18 @@ html, body{
 }
 
 #app{
+  width: 100%;
   height: 100%;
-  background-image: url("../img/bg.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
   z-index: 2;
   position: relative;
   transition-duration: 1s;
   background-image: url('../img/bg_game.png');
-  padding-left: 200px;
-  padding-right: 200px;
-  display: flex;
-  align-items: center;
 }
 
 .page{
   display: none;
   width: 100%;
+  height: 100%;
 }
 
 .bg{
@@ -123,5 +119,6 @@ a{
 
 @import 'page/home';
 @import 'page/intro';
+@import 'page/tuto';
 @import 'page/configuration';
 @import 'page/final';

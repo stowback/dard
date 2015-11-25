@@ -54,6 +54,9 @@
     text-align: center;
     padding-bottom: 1em;
     font-family: $font-titles;
+    transition: transform 0.3s ease;
+
+    &:hover{ transform: translate3d(0, -0.3em, 0); }
 
     p{
       font-size: 1.15em;
@@ -72,23 +75,23 @@
 
 .page-home.show{
   display: block;
-  animation: FadeIn 3s ease;
+  animation: FadeIn 4s ease;
   animation-fill-mode: both;
 
   .home-content{
     img, p, a{ 
-      animation: SlideInDownSmall 1s ease;
-      animation-delay: 0.7s;
+      animation: SlideInDownSmall 1.5s ease;
+      animation-delay: 1.6s;
       animation-fill-mode: both; 
     }
-    p{ animation-delay: 0.8s; }
-    a{ animation-delay: 0.9s; }
+    p{ animation-delay: 1.45s; }
+    a{ animation-delay: 1.3s; }
   }
 
   .home-footer{
-    animation: SlideInUpSmall 1s ease;
-    animation-delay: 2s;
-    animation-fill-mode: both;
+    animation: SlideInUpSmall 1.5s ease;
+    animation-delay: 3s;
+    animation-fill-mode: backwards;
   }
 }
 
@@ -100,10 +103,15 @@
   .home-content{
     img, p, a{ 
       animation: SlideOutDownSmall 1s ease;
-      animation-delay: 0.7s;
+      animation-delay: 0.3s;
       animation-fill-mode: both; 
     }
-    p{ animation-delay: 0.8s; }
-    a{ animation-delay: 0.9s; }
+    p{ animation-delay: 0.4s; }
+    a{ animation-delay: 0.5s; }
+  }
+
+  .home-footer{
+    animation: FadeOut 1s ease;
+    animation-fill-mode: both;
   }
 }

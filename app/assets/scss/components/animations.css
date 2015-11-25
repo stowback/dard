@@ -31,3 +31,16 @@
 /* Blink */
 
 @keyframes Blink { 0%{ opacity: 1; } 45%{ opacity: 1; } 55% { opacity: 0;} 95%{ opacity: 0; } }
+
+
+/* Config texts appatition */
+
+@keyframes ConfigTextShow {
+	0%{ opacity: 0; transform: translate3d(100%, 0, 0); }
+	100%{ opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes ConfigTextHide {
+	0%{ opacity: 1; transform: translate3d(0, 0, 0); }
+	100%{ opacity: 0; transform: translate3d(-100%, 0, 0); }
+}

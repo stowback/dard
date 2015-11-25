@@ -1,5 +1,119 @@
 /**
- * page/configuration
- */
+* page/configuration
+* configuration of navigation
+*/
 
- .page-configuration{ display: block !important; }
+
+/* base */
+
+.page-configuration{
+ 	display: block !important;
+ 	background-image: url(../img/background.jpg);
+ 	background-size: cover;
+ 	background-repeat: no-repeat;
+
+ 	.choices{
+ 		display: flex;
+ 		flex: 1;
+ 		justify-content: center;
+ 		align-items: center;
+ 		margin-bottom: 2em;
+
+ 		.choice{
+ 			display: block;
+ 			cursor: pointer;
+ 			margin-right: 40px;
+
+ 			figure{
+ 				display: flex;
+ 				justify-content: center;
+ 				align-items: center;
+ 				width: 150px;
+ 				height: 150px;
+ 				border: 1px solid rgba(#fefefe, 0.3);
+ 				transition: border-color 0.2s ease;
+
+ 				img{
+					display: block;
+					width: 100%;
+					opacity: 0.4;
+					transition: opacity 0.2s ease;
+ 				}
+ 			}
+
+ 			&:hover figure img, &.active figure img{ opacity: 1; }
+ 			&:hover a, &.active a{ color: $color-white; }
+
+ 			a{
+ 				position: relative;
+ 				display: block;
+ 				font-family: $font-titles;
+ 				color: rgba(#fefefe, 0.4);
+ 				text-transform: uppercase;
+ 				letter-spacing: 0.08em;
+ 				text-align: center;
+ 				transition: color 0.2s ease;
+
+ 				&:after{
+					display: block;
+					position: absolute;
+					bottom: -0.6em;
+					left: calc(50% - 5px); 
+					content: '';
+					width: 10px;
+					height: 3px;
+					background-color: $color-white;
+					opacity: 0.4;
+					transition: transform 0.2s ease, opacity 0.2s ease;
+ 				}
+ 			}
+
+ 			&.active a:after{ transform: scaleX(3); opacity: 1; }
+
+ 			&:last-child{ margin-right: 0; }
+ 		}
+ 	}
+
+	.confirm{
+		text-align: center;
+		padding-bottom: 1em;
+
+	 	.texts{
+	 		position: relative;
+	 		width: 600px;
+	 		margin: auto;
+	 		height: 3.5em;
+	 		overflow: hidden;
+
+	 		p{
+	 			position: absolute;
+	 			top: 0;
+	 			left: 0;
+	 			display: block;
+	 			width: 100%;
+	 			font-size: 1.2em;
+	 			font-weight: 300;
+	 			text-align: center;
+	 			line-height: 1.4;
+	 			color: $color-white-lte;
+	 		}
+
+	 		p.webcam, p.keyboard{ opacity: 0; }
+
+	 		p.show{
+	 			display: block;
+	 			animation: ConfigTextShow 0.3s ease;
+	 			animation-delay: 0.1s;
+	 			animation-fill-mode: both;
+	 		}
+
+	 		p.hide{
+	 			display: block;
+	 			animation: ConfigTextHide 0.3s ease;
+	 			animation-fill-mode: both;
+	 		}
+	 	}
+
+	 	.btn{ margin-top: 2em; }
+	}
+}
