@@ -70,7 +70,6 @@ _.extend(View.prototype, {
     });
     
     self.loadJS(function (res) {
-      console.log("loaded")
     });
 
     setTimeout(function(){
