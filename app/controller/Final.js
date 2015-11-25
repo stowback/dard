@@ -7,6 +7,34 @@
 
     app: function () {
 
+      var $content = $('.final-content');
+      var $video = $('.video-final');
+      var video = $video.get(0);
+
+      var mousePos = {
+        x: null,
+        y: null
+      };
+
+      var focusVideo = _.debounce(function (e) {
+
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+
+        $content.fadeOut(function () {
+          $('body').css('cursor', 'none');
+        });
+      }, 3000);
+
+      $content.mousemove(focusVideo);
+      $video.mousemove(function (e) {
+        if (e.clientX != mousePos.x || e.clientY != mousePos.y) {
+          $content.fadeIn(function () {
+            $('body').css('cursor', 'auto');
+          });
+        };
+      }); 
+
       $(".countdown").countdown("2016/01/01", function(event) {
         $this = $(this);
 
