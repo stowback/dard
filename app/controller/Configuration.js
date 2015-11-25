@@ -31,6 +31,19 @@ var configurationView = YoloJS.View.extend({
       }
     });
 
+
+    $('#confirm-button').on('click', function (e) {
+      e.preventDefault();
+      Daredevil.navigation = selectedChoice;
+
+      if (selectedChoice == "webcam") {
+        new webcamView();
+      } else {
+        Daredevil.router.navigate('/game');
+      }
+    });
+
+
     // $('.choices .choice').on({
       
     //   mouseenter: function () {
