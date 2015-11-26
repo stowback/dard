@@ -49,7 +49,7 @@ $(function () {
 
   router.add(/configuration/, function () {
 
-    new configurationView();
+    new tutoView();
   });
 
   router.add(/final/, function () {

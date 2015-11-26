@@ -91,18 +91,23 @@ _.extend(View.prototype, {
     var self = this;
 
     self.load(data, function () {
-      self.setPageClass();
-      self.app.apply(self, arguments);
-    });
-    
-    self.loadJS(function (res) {
-    });
-
-    setTimeout(function(){
       
-      self.deleteOldPage();
+    
+      self.loadJS(function (res) {
+        self.app.apply(self, arguments);
+      });
 
-    }, self.timingAnimationIntro);
+      if (YoloJS.previousPage != null) {
+        $('.page-' + YoloJS.previousPage).addClass('hide');
+      };
+
+      setTimeout(function(){
+        self.setPageClass();
+        self.deleteOldPage();
+
+      }, self.timingAnimationIntro);
+
+    });
   },
 
   // Apply when template is loaded, allow execute some code for this page.
@@ -111,10 +116,6 @@ _.extend(View.prototype, {
   setPageClass: function () {
 
     var self = this;
-
-    if (YoloJS.previousPage != null) {
-      $('.page-' + YoloJS.previousPage).addClass('hide');
-    };
 
     $(self.tagName + ' .page-' + self.pageName).addClass('show');
   },
