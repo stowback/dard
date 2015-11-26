@@ -6,7 +6,7 @@
 
 /* base */
 
-.page-home{
+.page-home, .page-win{
   background-color: #000000;
   background-image:url(../img/background.jpg);
   background-size: cover;

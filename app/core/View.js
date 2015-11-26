@@ -50,6 +50,11 @@ _.extend(View.prototype, {
 
   
   initialize: function () {
+
+    if (YoloJS.previousPage == null) {
+      this.timingAnimationIntro = 0;
+    };
+
     this.render();
   },
 
@@ -74,6 +79,8 @@ _.extend(View.prototype, {
   load: function (data, cb) {
 
     var self = this;
+
+    console.log(Daredevil)
 
     $.ajax({
       url: "views/" + this.tpl + ".hbs",

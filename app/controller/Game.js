@@ -20,8 +20,6 @@ var gameView = YoloJS.View.extend({
     game.callbacks.onLose = function (data){ console.log(data); };
     game.callbacks.onClue = function (data){ console.log(data); };
 
-    console.log(Daredevil.navigation);
-
     if (Daredevil.navigation == "webcam") {
       try {
         navigator.getUserMedia_({
