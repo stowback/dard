@@ -10,7 +10,7 @@
 @keyframes FadeOut { 0%{ opacity: 1; } 100%{ opacity: 0; } }
 
 
-/* slide */
+/* slide down */
 
 @keyframes SlideInDownSmall{ 0%{ opacity: 0; transform: translate3d(0, -2em, 0); }
 						100%{ opacity: 1; transform: none; } }
@@ -22,10 +22,14 @@
 @keyframes SlideOutDownBig{ 0%{ opacity: 1; transform: none; }
 						100%{ opacity: 0; transform: translate3d(0, -6em, 0); } }
 
+
+/* slide up */
+
 @keyframes SlideInUpSmall{ 0%{ opacity: 0; transform: translate3d(0, 2em, 0); }
 						100%{ opacity: 1; transform: none; } }
 @keyframes SlideOutUpSmall{ 0%{ opacity: 1; transform: none; }
 						100%{ opacity: 0; transform: translate3d(0, 2em, 0); } }
+						
 
 
 /* Blink */
@@ -43,4 +47,20 @@
 @keyframes ConfigTextHide {
 	0%{ opacity: 1; transform: translate3d(0, 0, 0); }
 	100%{ opacity: 0; transform: translate3d(-100%, 0, 0); }
+}
+
+
+
+/* Tuto */
+
+$tutoSectionAimationOffset: 100%;
+
+@keyframes TutoSectionEnter {
+	0%{ opacity: 0;  transform: translate3d($tutoSectionAimationOffset, 0, 0); }
+	100%{ opacity: 1;  transform: translate3d(0, 0, 0); }
+}
+
+@keyframes TutoSectionLeave {
+	0%{ opacity: 1;  transform: translate3d(0, 0, 0); }
+	100%{ opacity: 0;  transform: translate3d(-$tutoSectionAimationOffset, 0, 0); }
 }

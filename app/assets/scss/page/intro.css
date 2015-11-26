@@ -49,17 +49,17 @@
 
 .page.page-intro.show{
   display: block;
-  animation: FadeIn 3s ease;
+  animation: FadeIn 1s ease;
   animation-fill-mode: both;
 }
 
 .page.page-intro.hide{
   display: block;
-  animation: FadeOut 3s ease;
+  animation: FadeOut 1s ease;
   animation-fill-mode: both;
 
   .video-intro{
-    animation: FadeOut 3s ease;
+    animation: FadeOut 1s ease;
     animation-fill-mode: both;
   }
 }

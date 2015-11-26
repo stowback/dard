@@ -1,3 +1,8 @@
+/**
+ * Intro ViewController
+ * /intro
+ */
+
 var introView = YoloJS.View.extend({
 
   tagName: '#app',
@@ -6,28 +11,31 @@ var introView = YoloJS.View.extend({
   timingAnimationIntro: 3000,
 
   app: function () {
+
+    // DOM
     $page = $('.page-'+this.pageName);
-    var player = $page.find('video.video-intro').get(0);
+    $player = $page.find('video.video-intro');
+
+    // Launch
     setTimeout(function (){
-      player.play();
+      $player.get(0).play();
       $('.skip-btn').css('display', 'block');
     }, 2000);
 
-    player.onended = function () {
-      endVideoIntro();
-    }
 
+    $player.get(0).onended = function () { endVideoIntro(); };
     $('.video-intro').on('click', function (e)
     {
       e.preventDefault();
       endVideoIntro();
     });
 
-    $(document).on('keyup', endVideoIntro);
   }
 });
 
 
+// End video Intro
 function endVideoIntro() {
+  $player.animate({ volume: 0 }, 2000);
   Daredevil.router.navigate('/configuration');
 }

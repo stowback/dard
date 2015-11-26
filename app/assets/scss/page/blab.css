@@ -1,0 +1,68 @@
+/*
+* tuto.css
+* tuto page type styles
+*/
+
+
+/* base */
+
+.page-tuto{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.page-tuto-container{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 800px;
+		height: 450px;
+		border: 1px dashed rgba(#8c1329, 0.3);
+		padding: 4em 2em 1em 2em;
+		margin-top: 2.5em;
+	}
+}
+
+
+/* title */
+
+.tuto-container-title{
+	position: absolute;
+	top: -5em;
+	left: 0;
+	width: 100%;
+
+	h1{
+		font-family: $font-titles;
+		font-size: 4em;
+		font-weight: 500;
+		color: $color-white;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		text-align: center;
+
+		span{
+			font-family: $font-content;
+			font-weight: normal;
+			font-style: italic;
+			letter-spacing: 0.08em;
+		}
+	}
+
+	h2{
+		font-family: $font-titles;
+		font-size: 1.5em;
+		color: $color-primary;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		text-align: center;
+		text-shadow: 1px 1px 1px rgba(#000000, 0.1);
+	}
+}

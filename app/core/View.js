@@ -10,24 +10,50 @@
   this.libs['js']['CharacterSound'] = 'sound-engine/class/Character.class.js';
   this.libs['js']['DistrictSound'] = 'sound-engine/class/District.class.js';
 
+  // Put in YoloJS variable the current view
+  YoloJS.curentView = this;
+  this.previousPage = null;
+
   this.initialize.apply(this, arguments);
 };
 
 _.extend(View.prototype, {
 
+  /**
+   * Variables
+   * for configure the view.
+   */
+  
+  // tagName for append element
   tagName: 'div',
+
+  // Name for the classe
   pageName: 'default',
+  
+  // selector of the div
   pageDiv: $(this.tagName).find('.' + this.pageName),
+
+  // tpl HBS
   tpl: null,
+
+  // Timing animation Intro
   timingAnimationIntro: 0,
+
+  // Timing animation Outro
   timingAnimationOutro: 0,
+
+  // Body class
   bodyClass: null,
+
+  // JS loaded
   js: [],
 
+  
   initialize: function () {
     this.render();
   },
 
+  // Load the JS by js array, libs is in core/View.js
   loadJS: function (cb) {
 
     var self = this;
@@ -44,6 +70,7 @@ _.extend(View.prototype, {
     };
   },
 
+  // Load the hbs
   load: function (data, cb) {
 
     var self = this;
@@ -58,36 +85,37 @@ _.extend(View.prototype, {
     });
   },
 
+  // Render the page
   render: function (data) {
     
     var self = this;
 
-
-
     self.load(data, function () {
-      self.setPageClass();
-      self.app.apply(self, arguments);
-    });
-    
-    self.loadJS(function (res) {
-    });
-
-    setTimeout(function(){
       
-      self.deleteOldPage();
+    
+      self.loadJS(function (res) {
+        self.app.apply(self, arguments);
+      });
 
-    }, self.timingAnimationIntro);
+      if (YoloJS.previousPage != null) {
+        $('.page-' + YoloJS.previousPage).addClass('hide');
+      };
+
+      setTimeout(function(){
+        self.setPageClass();
+        self.deleteOldPage();
+
+      }, self.timingAnimationIntro);
+
+    });
   },
 
+  // Apply when template is loaded, allow execute some code for this page.
   app: function () {},
 
   setPageClass: function () {
 
     var self = this;
-
-    if (Daredevil.previousPage != null) {
-      $('.page-' + Daredevil.previousPage).addClass('hide');
-    };
 
     $(self.tagName + ' .page-' + self.pageName).addClass('show');
   },
@@ -96,9 +124,9 @@ _.extend(View.prototype, {
 
     var self = this;
 
-    $('.page-' + Daredevil.previousPage).remove();
+    $('.page-' + YoloJS.previousPage).remove();
 
-    Daredevil.previousPage = self.pageName;
+    YoloJS.previousPage = self.pageName;
   }
 });
 

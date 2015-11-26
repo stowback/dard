@@ -56,7 +56,6 @@ html, body{
   z-index: 2;
   position: relative;
   transition-duration: 1s;
-  background-image: url('../img/bg_game.png');
 }
 
 .page{
@@ -65,7 +64,7 @@ html, body{
   height: 100%;
 }
 
-.bg{
+/*.bg{
   position: absolute;
   z-index: 1;
   left: 0; right: 0; bottom: 0; top: 0;
@@ -74,7 +73,7 @@ html, body{
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #000;
-}
+}*/
 
 a{
   text-decoration: none;
@@ -112,6 +111,11 @@ a{
   left: 0;
   width: 100%;
   height: 100%;
+  &.show{
+    display: block;
+    animation: FadeIn 4s ease;
+    animation-fill-mode: both;
+  }
 }
 
 
@@ -120,5 +124,5 @@ a{
 @import 'page/home';
 @import 'page/intro';
 @import 'page/tuto';
-@import 'page/configuration';
+/*@import 'page/configuration';*/
 @import 'page/final';

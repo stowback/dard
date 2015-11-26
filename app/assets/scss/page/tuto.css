@@ -1,51 +1,55 @@
-/*
-* tuto.css
-* tuto page type styles
+/**
+* page/configuration
+* configuration of navigation
 */
 
 
 /* base */
 
 .page-tuto{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: none;
+	background-image: url(../img/background.jpg);
+	background-size: cover;
+	background-position: center;
 
-	.page-tuto-container{
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+	.page-tuto-titles{
+		display: block;
+		width: 100%;
+		position: absolute;
+		z-index: 500;
+		left: 0;
+		top: calc(50% - 250px - 4.5em);
+	}
+
+	.page-tuto-contents{
+		display: block;
 		width: 800px;
-		height: 450px;
-		border: 1px dashed rgba(#8c1329, 0.3);
-		padding: 4em 2em 1em 2em;
-		margin-top: 2.5em;
+		height: 500px;
+		position: absolute;
+		z-index: 300;
+		top: calc(50% - 250px);
+		left: calc(50% - 400px);
+		border: 2px dashed rgba(#8c1329, 0.3);
+		overflow: hidden;
 	}
 }
 
 
 /* title */
 
-.tuto-container-title{
+.tuto-title{
+	display: none;
 	position: absolute;
-	top: -5em;
+	top: 0;
 	left: 0;
 	width: 100%;
 
 	h1{
 		font-family: $font-titles;
 		font-size: 4em;
-		font-weight: 500;
+		font-weight: 700;
 		color: $color-white;
 		text-transform: uppercase;
-		letter-spacing: 0.08em;
 		text-align: center;
 
 		span{
@@ -58,11 +62,245 @@
 
 	h2{
 		font-family: $font-titles;
-		font-size: 1.5em;
-		color: $color-primary;
+		font-size: 1.2em;
+		color: #8c1329;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
 		text-align: center;
 		text-shadow: 1px 1px 1px rgba(#000000, 0.1);
 	}
+}
+
+
+/* content */
+
+.tuto-content{
+	display: none;
+	position: absolute;
+	z-index: 320;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 7em 8em 10em 8em;
+
+	p{
+		font-size: 1.2em;
+		text-align: center;
+	}
+
+	figure{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 150px;
+		height: 150px;
+		border: 2px solid rgba(#fefefe, 0.3);
+		transition: border-color 0.2s ease;
+		margin: auto;
+
+		img{
+			display: block;
+			width: 100%;
+			opacity: 0.4;
+			transition: opacity 0.2s ease;
+		}
+	}
+
+	.contents-controls{
+		position: absolute;
+		z-index: 350;
+		bottom: 1.5em;
+		left: 0;
+		width: 100%;
+		text-align: center;
+
+		.paginator{
+			display: block;
+			margin: auto;
+			margin-top: 0.6em;
+
+			span{
+				display: inline-block;
+				vertical-align: middle;
+
+				&.total{
+					&:before{
+						display: inline-block;
+						vertical-align: middle;
+						content: '/';
+						margin-right: 0.2em;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* goal */
+
+.tuto-goal{
+
+	p{ margin-top: 2em; margin-bottom: 1em; }
+	p:last-child{ margin-bottom: 0; }
+
+}
+
+
+/* choices */
+
+.tuto-choice{
+
+ 	.choices{
+ 		display: flex;
+ 		justify-content: center;
+ 		align-items: center;
+ 		margin-bottom: 2em;
+
+ 		.choice{
+ 			display: block;
+ 			cursor: pointer;
+ 			margin-right: 40px;
+
+ 			&:hover figure img, &.active figure img{ opacity: 1; }
+ 			&:hover a, &.active a{ color: $color-white; }
+
+ 			a{
+ 				position: relative;
+ 				display: block;
+ 				font-family: $font-titles;
+ 				color: rgba(#fefefe, 0.4);
+ 				text-transform: uppercase;
+ 				letter-spacing: 0.08em;
+ 				text-align: center;
+ 				transition: color 0.2s ease;
+
+ 				&:after{
+					display: block;
+					position: absolute;
+					bottom: -0.6em;
+					left: calc(50% - 5px); 
+					content: '';
+					width: 10px;
+					height: 3px;
+					background-color: $color-white;
+					opacity: 0.4;
+					transition: transform 0.2s ease, opacity 0.2s ease;
+ 				}
+ 			}
+
+ 			&.active a:after{ transform: scaleX(3); opacity: 1; }
+ 			&.active figure{ border-color: $color-white; }
+
+ 			&:last-child{ margin-right: 0; }
+ 		}
+ 	}
+
+	p{
+		font-size: 1.2em;
+		text-align: center;
+		margin-top: 2em;
+	}
+}
+
+
+/* commands */
+
+.tuto-commands{
+
+	.tuto-command{
+		margin-bottom: 1em;
+
+		&:last-child{ margin-bottom: 0; }
+
+		h3{
+			font-family: $font-titles;
+			font-weight: 700;
+		}
+	}
+}
+
+
+/* animations */
+
+.page-tuto.show{ 
+	display: block;
+	animation: FadeIn 3s ease;
+	animation-fill-mode: both;
+
+	.page-tuto-contents{
+		display: block;
+		animation: TutoSectionEnter 1s ease;
+		animation-delay: 1s;
+		animation-fill-mode: both;
+	}
+
+	.tuto-title:first-child{
+		display: block;
+		animation: TutoSectionEnter 0.8s ease;
+		animation-delay: 1.3s;
+		animation-fill-mode: both;
+	}
+
+	.tuto-goal{
+		display: block;
+
+		.figure-container, p, .content-controls{
+			animation: TutoSectionEnter 0.7s ease; 
+			animation-delay: 1.2s;
+			animation-fill-mode: both;
+		}
+		p{ animation-delay: 1.25s; }
+		.content-controls{ animation-delay: 1.3s; }
+
+	}
+}
+
+.tuto-title.hide{
+	display: block;
+
+	h1, h2{
+		animation: TutoSectionLeave 1s ease;
+		animation-fill-mode: both;
+	}
+	h1{ animation-delay: 0.2s; }
+}
+
+.tuto-title.show{
+	display: block;
+
+	h1, h2{
+		animation: TutoSectionEnter 1s ease;
+		animation-fill-mode: both;
+		animation-delay: 0.7s;
+	}
+	h2{ animation-delay: 0.8s; }
+}
+
+.page-tuto.show .tuto-goal.hide{
+	display: block;
+
+	.figure-container, p, .contents-controls{
+		animation: TutoSectionLeave 1s ease;
+		animation-delay: 0.3s;
+		animation-fill-mode: both;
+	}
+	p{ animation-delay: 0.35s; }
+	.content-controls{ animation-delay: 0.4s; }
+}
+
+.tuto-choice.show{
+	display: block;
+
+	.choices, p, .contents-controls{
+		animation: TutoSectionEnter 1s ease;
+		animation-delay: 0.7s;
+		animation-fill-mode: both;
+	}
+	p{ animation-delay: 0.75s; }
+	.content-controls{ animation-delay: 0.8s; }
 }
