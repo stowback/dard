@@ -22,6 +22,10 @@ var introView = YoloJS.View.extend({
       $('.skip-btn').css('display', 'block');
     }, 2000);
 
+    $('.skip-btn').click(function (e) {
+      e.preventDefault();
+    });
+
 
     $player.get(0).onended = function () { endVideoIntro(); };
     $('.video-intro').on('click', function (e)
