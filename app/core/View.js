@@ -134,15 +134,15 @@ _.extend(View.prototype, {
         self.app.apply(self, arguments);
       });
 
-      if (YoloJS.previousPage != null) {
-        $('.page-' + YoloJS.previousPage).addClass('hide');
+      if (YoloJS.previousPage) {
+        $('.page-' + YoloJS.previousPage.pageName).addClass('hide');
       };
 
       setTimeout(function(){
         self.setPageClass();
         self.deleteOldPage();
 
-      }, self.timingAnimationIntro);
+      }, self.timingAnimationOutro);
 
     });
   },
@@ -161,9 +161,11 @@ _.extend(View.prototype, {
 
     var self = this;
 
-    $('.page-' + YoloJS.previousPage).remove();
+    if (YoloJS.previousPage) {
+      $('.page-' + YoloJS.previousPage.pageName).remove();
+    };
 
-    YoloJS.previousPage = self.pageName;
+    YoloJS.previousPage = self;
   }
 });
 
