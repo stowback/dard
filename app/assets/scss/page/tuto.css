@@ -47,16 +47,18 @@
 	h1{
 		font-family: $font-titles;
 		font-size: 4em;
-		font-weight: 700;
+		font-weight: 500;
 		color: $color-white;
 		text-transform: uppercase;
 		text-align: center;
+		/*letter-spacing: -0.05em;*/
 
 		span{
 			font-family: $font-content;
 			font-weight: normal;
 			font-style: italic;
-			letter-spacing: 0.08em;
+			/*letter-spacing: 0.08em;*/
+			letter-spacing: 0em;
 		}
 	}
 
@@ -98,14 +100,14 @@
 		align-items: center;
 		width: 150px;
 		height: 150px;
-		border: 2px solid rgba(#fefefe, 0.3);
+		border: 2px solid rgba(#fefefe, 0.7);
 		transition: border-color 0.2s ease;
 		margin: auto;
 
 		img{
 			display: block;
 			width: 100%;
-			opacity: 0.4;
+			opacity: 0.8;
 			transition: opacity 0.2s ease;
 		}
 	}
@@ -159,12 +161,16 @@
  		display: flex;
  		justify-content: center;
  		align-items: center;
- 		margin-bottom: 2em;
+ 		margin-bottom: 3em;
 
  		.choice{
  			display: block;
  			cursor: pointer;
  			margin-right: 40px;
+
+ 			figure{
+ 				margin-bottom: 1em;
+ 			}
 
  			&:hover figure img, &.active figure img{ opacity: 1; }
  			&:hover a, &.active a{ color: $color-white; }
@@ -173,7 +179,8 @@
  				position: relative;
  				display: block;
  				font-family: $font-titles;
- 				color: rgba(#fefefe, 0.4);
+ 				font-size: 1.2em;
+ 				color: rgba(#fefefe, 0.8);
  				text-transform: uppercase;
  				letter-spacing: 0.08em;
  				text-align: center;
@@ -182,13 +189,13 @@
  				&:after{
 					display: block;
 					position: absolute;
-					bottom: -0.6em;
+					bottom: -0.4em;
 					left: calc(50% - 5px); 
 					content: '';
 					width: 10px;
-					height: 3px;
+					height: 2px;
 					background-color: $color-white;
-					opacity: 0.4;
+					opacity: 0.8;
 					transition: transform 0.2s ease, opacity 0.2s ease;
  				}
  			}
@@ -197,6 +204,22 @@
  			&.active figure{ border-color: $color-white; }
 
  			&:last-child{ margin-right: 0; }
+ 		}
+
+ 		&:hover{
+
+			figure{ border-color: rgba(#fefefe, 0.4); }
+			figure img{ opacity: 0.4; }
+			a{ border-color: rgba(#fefefe, 0.4); }
+			a:after{ opacity: 0.4; }
+
+			.choice:hover{
+
+				figure{ border-color: $color-white; }
+				figure img{ opacity: 1; }
+				a{ border-color: $color-white; }
+				a:after{ opacity: 1; }
+			}
  		}
  	}
 
@@ -213,13 +236,22 @@
 .tuto-commands{
 
 	.tuto-command{
-		margin-bottom: 1em;
+		margin-bottom: 3em;
 
 		&:last-child{ margin-bottom: 0; }
 
 		h3{
+			font-size: 1.2em;
 			font-family: $font-titles;
 			font-weight: 700;
+			text-transform: uppercase;
+			text-align: center;
+			/*letter-spacing: 0.1em;*/
+			margin-bottom: 0.5em;
+		}
+
+		p strong{
+			color: $color-white;
 		}
 	}
 }
@@ -303,4 +335,59 @@
 	}
 	p{ animation-delay: 0.75s; }
 	.content-controls{ animation-delay: 0.8s; }
+}
+
+.tuto-choice.hide{
+	display: block;
+
+	.choices, p, .contents-controls{
+		animation: TutoSectionLeave 1s ease;
+		animation-delay: 0.3s;
+		animation-fill-mode: both;
+	}
+	p{ animation-delay: 0.35s; }
+	.content-controls{ animation-delay: 0.4s; }
+}
+
+.tuto-commands.show{
+	display: block;
+
+	.tuto-command, .contents-controls{
+		animation: TutoSectionEnter 1s ease;
+		animation-delay: 0.7s;
+		animation-fill-mode: both;
+
+		&:nth-child(2){ animation-delay: 0.75s; }
+		&:nth-child(3){ animation-delay: 0.8s; }
+		&:nth-child(4){ animation-delay: 0.85s; }
+	}
+	.contents-controls{ animation-delay: 0.9s; }
+}
+.tuto-commands.hide{
+	display: block;
+
+	.tuto-command, .contents-controls{
+		animation: TutoSectionLeave 1s ease;
+		animation-delay: 0.3s;
+		animation-fill-mode: both;
+
+		&:nth-child(2){ animation-delay: 0.35s; }
+		&:nth-child(3){ animation-delay: 0.40s; }
+		&:nth-child(4){ animation-delay: 0.45s; }
+	}
+	.contents-controls{ animation-delay: 0.5s; }
+}
+
+.page-tuto.hide{
+	display: block;
+	animation: FadeOut 2s ease;
+	animation-delay: 0.8s;
+	animation-fill-mode: both;
+
+	.page-tuto-contents{
+		display: block;
+		animation: TutoSectionLeave 1s ease;
+		animation-delay: 0.5s;
+		animation-fill-mode: both;
+	}
 }

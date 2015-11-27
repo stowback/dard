@@ -3,34 +3,33 @@ var loadingGameView = YoloJS.View.extend({
   tagName: '#app',
   pageName: "loading",
   tpl: 'loading',
-  timingAnimationIntro: 1000,
+  timingAnimationIntro: 2800,
   js: ['GameSound', 'MapSound', 'CharacterSound', 'DistrictSound'],
 
   app: function () {
-
-    var jsonCall = $.getJSON('js/sound-engine/config.json');
+    alert('loading');
+    // Request
+    // var jsonCall = $.getJSON('js/sound-engine/config.json');
     
-    jsonCall.success(function (data){
-      $('.cadre-content p').append('<br /> JSON loaded');
+    // // Success
+    // jsonCall.success(function (data)
+    // {
+    //   console.log('config chargée');
+    //   // Store
+    //   config = data;
 
-      // Store
-      config = data;
+    //   // Create map
+    //   Daredevil.map = new Map(config);
 
-      // Create map
-      map = new Map(config);
+    //   // Init
+    //   map.init(
+    //     function (){ console.log('progress'); },
+    //     function (){ alert("chargé") },
+    //     function (error){ console.log(error); });
+    // });
 
-      Daredevil.map = map;
-
-      // Init
-      map.init(
-        function (){ console.log('progress'); },
-        function ()
-        {
-          new gameView();
-        },
-        function (error){ console.log(error); });
-    });
-    jsonCall.error(function (err){ console.log(err); });
+    // // Error
+    // jsonCall.error(function (err){ console.log(err); });
     
   }
 });

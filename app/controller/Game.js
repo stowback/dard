@@ -7,6 +7,8 @@ var gameView = YoloJS.View.extend({
 
   app: function () {
 
+    alert('game');
+
     var game = new Game(Daredevil.map);
 
     game.init(function () {

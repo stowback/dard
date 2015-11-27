@@ -4,7 +4,7 @@
   <!-- Step 1 -->
   <div class="tuto-title" data-step="1">
     <h2>The experiment</h2>
-    <h1>The <span>Goal</span></h1>
+    <h1>Game <span>Goal</span></h1>
   </div>
 
   <!-- Step 2 -->
@@ -25,7 +25,7 @@
 <div class="page-tuto-contents">
 
   <!-- Step 1 -->
-  <div class="tuto-content tuto-goal" data-step="1" data-init="initChoice">
+  <div class="tuto-content tuto-goal" data-step="1">
 
     <!-- Illustration -->
     <div class="figure-container">
@@ -48,7 +48,7 @@
   </div>
   
   <!-- Step 2 -->
-  <div class="tuto-content tuto-choice" data-step="2">
+  <div class="tuto-content tuto-choice" data-step="2" data-init="initChoice">
 
     <!-- Choices -->
     <div class="choices">
@@ -71,7 +71,7 @@
 
     <!-- Controls -->
     <div class="contents-controls">
-      <a href="#" class="btn btn-next">Next</a>
+      <a href="#" class="btn btn-next disabled">Next</a>
       <span class="paginator">
         <span class="current">2</span>
         <span class="total">3</span>
@@ -81,25 +81,19 @@
   </div>
 
   <!-- Step 3 -->
-  <div class="tuto-content tuto-commands" data-step="3">
-    
-    <!-- Command -->
-    <div class="tuto-command">
-      <h3>Move</h3>
-      <p>Maintain the left, up or right key down to oriente yoursel in the right direction.</p>
-    </div>
+  <div class="tuto-content tuto-commands" data-step="3" data-init="initCommands">
 
     <!-- Command -->
     <div class="tuto-command">
-      <h3>Move</h3>
-      <p>Maintain the left, up or right key down to oriente yoursel in the right direction.</p>
+      <h3>Clues</h3>
+      <p>If you lose track of the kidnapper, the sound stops and you can track him using your famous network of friends.</p>
     </div>
 
     <!-- Controls -->
     <div class="contents-controls">
-      <a href="#" class="btn btn-previous">Previous</a>
+      <a href="#" class="btn btn-next">Start</a>
       <span class="paginator">
-        <span class="current">2</span>
+        <span class="current">3</span>
         <span class="total">3</span>
       </span>
     </div>

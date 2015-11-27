@@ -124,5 +124,6 @@ a{
 @import 'page/home';
 @import 'page/intro';
 @import 'page/tuto';
+@import 'page/loading';
 /*@import 'page/configuration';*/
 @import 'page/final';

@@ -40,11 +40,8 @@ $(function () {
 
   router.add(/game/, function () {
 
-    if (Daredevil.map != null) {
-      new gameView(); 
-    } else {
-      new loadingGameView();
-    }
+    if (Daredevil.map != null) { new gameView(); }
+    else{ new loadingGameView(); }
   });
 
   router.add(/configuration/, function () {

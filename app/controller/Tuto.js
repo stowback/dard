@@ -4,7 +4,7 @@ var tutoView = YoloJS.View.extend({
   tagName: '#app',
   pageName: "tuto",
   tpl: 'tuto',
-  timingAnimationIntro: 1000,
+  timingAnimationIntro: 0,
 
   // Vue
   current: 1,
@@ -24,11 +24,12 @@ var tutoView = YoloJS.View.extend({
 
   },
 
-  next: function (index)
+  // Next
+  next: function ()
   {
     
     // Section
-    if(this.current <= this.total)
+    if(this.current < this.total)
     {
       // Update
       this.current++;
@@ -39,59 +40,85 @@ var tutoView = YoloJS.View.extend({
 
       // Add next
       var next = $('.tuto-content[data-step='+this.current+'], .tuto-title[data-step='+this.current+']');
-      next.addClass('show').removeClass('hide');
-      if(next.attr('data-init')){ this[next.attr('data-init')]; }
+      if(next.get(1) && next.get(1).getAttribute('data-init'))
+      {
+        this[next.get(1).getAttribute('data-init')](function ()
+        {
+          // Show
+          next.addClass('show').removeClass('hide');
+        });
+      }
+      else
+      {
+        // Show
+        next.addClass('show').removeClass('hide');
+      }
     }
 
-    // 
+    // Game
     else
     {
+      // Transition
+      $('.tuto-title.show').addClass('hide').removeClass('show');
+      $('.tuto-content.show').addClass('hide').removeClass('show');
 
+      // Next
+      if(!Daredevil.map){ Daredevil.router('/loading'); }
+      else{ Daredevil.router('/game'); }
     }
 
   },
 
 
   // Choice
-
-  initChoice: function ()
+  initChoice: function (callback)
   {
 
-    var selectedChoice = null;
+    // Reference
+    var self = this;
 
+    // Choice
+    Daredevil.navigation = null;
+
+    // Selection
     $('.choices .choice').on('click', function (e)
     {
       e.preventDefault();
 
-      if($(this).attr('data-help') != selectedChoice)
+      if($(this).attr('data-help') != Daredevil.navigation)
       {
         // Selected
-        selectedChoice = $(this).attr('data-help');
+        Daredevil.navigation = $(this).attr('data-help');
 
         // Active state
         $('.choice').removeClass('active');
         $(this).addClass('active');
 
-        // Texts
-        $('.confirm .texts p').removeClass('show').addClass('hide');
-        $('.confirm .texts p.' + selectedChoice).addClass('show').removeClass('hide');
-
         // Button
-        $('.btn.disabled').removeClass('disabled');
+        $('.tuto-choice .btn.disabled').removeClass('disabled');
       }
     });
 
-
-    $('#confirm-button').on('click', function (e) {
-      e.preventDefault();
-      Daredevil.navigation = selectedChoice;
-
-      if (selectedChoice == "webcam") {
-        new webcamView();
-      } else {
-        Daredevil.router.navigate('/game');
-      }
-    });
+    // Callback
+    callback();
 
   },
+
+
+  // Commands
+  initCommands: function (callback)
+  {
+
+    // Content
+    var contents = {
+      webcam: '<div class="tuto-command"><h3>Move</h3><p>Turn your head on left, right or top <strong>down</strong> to steer you in the right direction and catch up the kidnapper.</p></div><div class="tuto-command"><h3>Pause</h3><p>Just open your eyes to pause the game.</p></div>',
+      keyboard: '<div class="tuto-command"><h3>Move</h3><p>Maintain the left, ahead or right key down to steer yourself. You must maintain the key pressed on the kidnapper direction.</p></div><div class="tuto-command"><h3>Pause</h3><p>Just open your eyes to pause the game.</p></div>'
+    };
+    $('.tuto-commands').prepend($(contents[Daredevil.navigation]));
+
+    // Callback
+    callback();
+
+  },
+
 });
