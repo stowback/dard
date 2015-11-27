@@ -64,7 +64,7 @@ var tutoView = YoloJS.View.extend({
 
       // Next
       console.log(Daredevil.navigation);
-      if(Daredevil.navigation == "webcam"){ webcamView(); }
+      if(Daredevil.navigation == "webcam"){ new webcamView(); }
       else
       {
         if(!Daredevil.map){ new loadingGameView();  }
