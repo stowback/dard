@@ -50,6 +50,11 @@ _.extend(View.prototype, {
 
   
   initialize: function () {
+
+    if (YoloJS.previousPage == null) {
+      this.timingAnimationIntro = 0;
+    };
+
     this.render();
   },
 
@@ -73,6 +78,38 @@ _.extend(View.prototype, {
   // Load the hbs
   load: function (data, cb) {
 
+    var self = this,
+        tpl;
+
+    var html = app.tplLoaded[self.tpl];
+
+    if (html) {
+
+      self.templating(self.compile(html), data, function () {
+        cb(null, true);
+      });
+    } else {
+
+      $.ajax({
+        url: "views/" + this.tpl + ".hbs",
+      }).done(function (hbs) {
+
+        app.tplLoaded[self.tpl] = hbs;
+
+        self.templating(self.compile(hbs), data, function () {
+          cb(null, true);
+        });
+      });
+    }
+  },
+
+  compile: function (html) {
+
+    return Handlebars.compile(html);
+  },
+
+  templating: function (template, data, cb) {
+
     var self = this;
 
     $.ajax({
@@ -81,7 +118,7 @@ _.extend(View.prototype, {
       
       var tpl = Handlebars.compile(hbs);  
       $(self.tagName).append('<div class="page page-' + self.pageName + '">' + tpl(data) + '</div>');
-      cb(null, true)
+      cb(null, true);
     });
   },
 
@@ -97,15 +134,15 @@ _.extend(View.prototype, {
         self.app.apply(self, arguments);
       });
 
-      if (YoloJS.previousPage != null) {
-        $('.page-' + YoloJS.previousPage).addClass('hide');
+      if (YoloJS.previousPage) {
+        $('.page-' + YoloJS.previousPage.pageName).addClass('hide');
       };
 
       setTimeout(function(){
         self.setPageClass();
         self.deleteOldPage();
 
-      }, self.timingAnimationIntro);
+      }, self.timingAnimationOutro);
 
     });
   },
@@ -124,9 +161,11 @@ _.extend(View.prototype, {
 
     var self = this;
 
-    $('.page-' + YoloJS.previousPage).remove();
+    if (YoloJS.previousPage) {
+      $('.page-' + YoloJS.previousPage.pageName).remove();
+    };
 
-    YoloJS.previousPage = self.pageName;
+    YoloJS.previousPage = self;
   }
 });
 

@@ -6,12 +6,15 @@ var YoloJS = function () {
 
 var dard = YoloJS.Daredevil = function () {
 
+  this.loadTpl.apply(this);
 }
 
 _.extend(dard.prototype, {
 
   previousPage: null,
   map: null,
+  tpl: [],
+  tplLoaded: [],
   
   process: function (faceData) {
     if (faceData.faceRotation[1] > 0.10) {
@@ -37,10 +40,28 @@ _.extend(dard.prototype, {
         time: new Date()
       });
     }
+  },
+
+  loadTpl: function () {
+
+    var self = this;
+    var promise = [];
+
+    _.each(self.tpl ,function (tpl) {
+
+      promise.push($.ajax({
+        url: "views/" + tpl + ".hbs",
+        complete: function (hbs) {
+          self.tplLoaded[tpl] = hbs.responseText; 
+        }
+      }));
+    });
+
+    $.when.apply($, promise).then(function () {
+      $.event.trigger('tplLoaded');
+    });
   }
 });
-
-var Daredevil = new dard();
 
 // Backbone extend
 var extend = function(protoProps, staticProps) {
@@ -63,3 +84,4 @@ var extend = function(protoProps, staticProps) {
   return child;
 };
 
+dard.extend = extend;

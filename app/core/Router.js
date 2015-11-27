@@ -7,6 +7,7 @@ var Router = YoloJS.Router = function () {
 };
 
 _.extend(Router.prototype, {
+
   config: function  (options) {
     this.mode = options && options.mode && options.mode == 'history' 
                 && !!(history.pushState) ? 'history' : 'hash';
@@ -15,6 +16,7 @@ _.extend(Router.prototype, {
   },
 
   add: function (route, handler) {
+
     if(typeof route == 'function') {
       handler = route;
       route = '';
@@ -24,6 +26,7 @@ _.extend(Router.prototype, {
   },
 
   getFragment: function() {
+
     var fragment = '';
     if(this.mode === 'history') {
         fragment = this.clearSlashes(decodeURI(location.pathname + location.search));
@@ -37,10 +40,12 @@ _.extend(Router.prototype, {
   },
   
   clearSlashes: function(path) {
+
     return path.toString().replace(/\/$/, '').replace(/^\//, '');
   },
 
   check: function(f) {
+
     var fragment = f || this.getFragment();
     for(var i=0; i<this.routes.length; i++) {
       var match = fragment.match(this.routes[i].route);
@@ -54,6 +59,7 @@ _.extend(Router.prototype, {
   },
 
   listen: function() {
+
     var self = this;
 
     var current = self.getFragment();
@@ -71,6 +77,7 @@ _.extend(Router.prototype, {
   },
 
   navigate: function(path) {
+    
     path = path ? path : '';
     if(this.mode === 'history') {
       history.pushState(null, null, this.root + this.clearSlashes(path));
