@@ -1,5 +1,5 @@
 var Yolo = YoloJS.Daredevil.extend({
-  tpl: ['about', 'tuto', 'final', 'game', 'goal', 'help', 'home', 'intro', 'loading', 'webcam', 'win'],
+  tpl: ['about', 'tuto', 'final', 'game', 'goal', 'help', 'home', 'intro', 'loading', 'webcam', 'win', 'clue'],
   tplLoaded: []
 });
 
