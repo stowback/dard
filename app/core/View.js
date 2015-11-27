@@ -168,7 +168,7 @@ _.extend(View.prototype, {
 
   getTpl: function (tpl, data, cb) {
 
-    var hbs = YoloJS.tplLoaded[tpl],
+    var hbs = app.tplLoaded[tpl],
         self = this;
 
     if (hbs) {
