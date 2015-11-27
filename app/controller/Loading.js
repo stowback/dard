@@ -89,7 +89,16 @@ var loadingGameView = YoloJS.View.extend({
     // Webcam
     if(Daredevil.navigation == "webcam")
     {
+      $(document).on('eyesClosed', function ()
+      {
+        // Remove event
+        $(document).off('eyesClosed');
 
+        // Game
+        Daredevil.router.navigate('/game');
+      });
+
+      setTimeout(function (){ self.setLoading("Close your eyes to start"); }, 2000);
     }
 
     // Keyboard
