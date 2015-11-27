@@ -39,7 +39,6 @@
 		this.kidnapperAdvance = this.map.config.characters.kidnapper.advance;
 
 		// Navigation
-		
 		this.move = {
 			daredevil: {
 				moving: false,
