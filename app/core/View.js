@@ -169,8 +169,21 @@ _.extend(View.prototype, {
         self = this;
 
     if (hbs) {
-      return self.compile()
-    };
+      
+      var tpl = self.compile(tpl);
+      return tpl(data);
+    } else {
+
+      $.ajax({
+        url: "views/" + tpl + ".hbs",
+      }).done(function (hbs) {
+
+        app.tplLoaded[tpl] = hbs;
+
+        var tpl = self.compile(tpl);
+        return tpl(data);
+      });
+    }
   } 
 });
 
