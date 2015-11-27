@@ -1,3 +1,6 @@
+/**
+ * YoloJS Framework routing
+ */
 var Router = YoloJS.Router = function () {
 
   this.routes = [];
@@ -6,8 +9,14 @@ var Router = YoloJS.Router = function () {
   this.updated = false;
 };
 
+// Extend Router
 _.extend(Router.prototype, {
 
+  /**
+   * Config
+   * history: url in / but need URL REWRITING for work well
+   * hash: Work everywhere
+   */
   config: function  (options) {
     this.mode = options && options.mode && options.mode == 'history' 
                 && !!(history.pushState) ? 'history' : 'hash';
@@ -15,6 +24,11 @@ _.extend(Router.prototype, {
     return this;
   },
 
+  /**
+   * Add a route to the router
+   * @param {regex} route       the regex of the route
+   * @param {function} handlr   the callback
+   */
   add: function (route, handler) {
 
     if(typeof route == 'function') {
@@ -25,6 +39,10 @@ _.extend(Router.prototype, {
     return this;
   },
 
+  /**
+   * Get the current fragment of the url
+   * @return {string} the url
+   */
   getFragment: function() {
 
     var fragment = '';
@@ -39,11 +57,17 @@ _.extend(Router.prototype, {
     return this.clearSlashes(fragment);
   },
   
+  /**
+   * Clean the url
+   */
   clearSlashes: function(path) {
 
     return path.toString().replace(/\/$/, '').replace(/^\//, '');
   },
 
+  /**
+   * Check the url
+   */
   check: function(f) {
 
     var fragment = f || this.getFragment();
@@ -58,6 +82,9 @@ _.extend(Router.prototype, {
     return this;
   },
 
+  /**
+   * Listen the router
+   */
   listen: function() {
 
     var self = this;
@@ -76,6 +103,10 @@ _.extend(Router.prototype, {
     return this;
   },
 
+  /**
+   * Navigate into the router and the App
+   * @param  {string} path the string of the url
+   */
   navigate: function(path) {
     
     path = path ? path : '';
