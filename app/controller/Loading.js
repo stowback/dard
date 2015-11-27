@@ -94,18 +94,8 @@ var loadingGameView = YoloJS.View.extend({
 
       $(document).on('eyesClosed', function ()
       {
-
-        console.log("salut bb")
-
-        // Remove event
         $(document).off('eyesClosed');
-
-        // Game
         Daredevil.router.navigate('/game');
-      });
-
-      $(document).on('lookLeft', function () {
-        console.log('left');
       });
 
       setTimeout(function (){ self.setLoading("Close your eyes to start"); }, 2000);
