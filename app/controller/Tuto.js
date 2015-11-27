@@ -5,6 +5,7 @@ var tutoView = YoloJS.View.extend({
   pageName: "tuto",
   tpl: 'tuto',
   timingAnimationOutro: 3000,
+  js: ['visageSDK'],
 
   // Vue
   current: 1,
@@ -28,6 +29,8 @@ var tutoView = YoloJS.View.extend({
   next: function ()
   {
     
+    var self = this;
+
     // Section
     if(this.current < this.total)
     {
@@ -63,8 +66,11 @@ var tutoView = YoloJS.View.extend({
       $('.tuto-content.show').addClass('hide').removeClass('show');
 
       // Next
-      console.log(Daredevil.navigation);
-      if(Daredevil.navigation == "webcam"){ new webcamView(); }
+      if(Daredevil.navigation == "webcam"){ 
+        self.loadJS(function () {
+          new webcamView();
+        }, [ 'bezier', 'visage']);
+      }
       else
       {
         if(!Daredevil.map){ new loadingGameView();  }

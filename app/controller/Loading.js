@@ -41,6 +41,8 @@ var loadingGameView = YoloJS.View.extend({
       // Create map
       Daredevil.map = new Map(config);
 
+      startTracking();
+
       // Init
       Daredevil.map.init(
         function (message){ self.setLoading(message); },
@@ -91,6 +93,7 @@ var loadingGameView = YoloJS.View.extend({
     {
       $(document).on('eyesClosed', function ()
       {
+
         // Remove event
         $(document).off('eyesClosed');
 

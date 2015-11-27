@@ -64,21 +64,26 @@ _.extend(View.prototype, {
   },
 
   // Load the JS by js array, libs is in core/View.js
-  loadJS: function (cb) {
+  loadJS: function (cb, javascript) {
 
     var self = this;
     var count = 0;
+    var libs;
 
-    if (self.js.length <= 0) {
+    if (self.js.length <= 0 && !javascript) {
       return cb(true);
-    };
+    } else if (javascript) {
+      libs = javascript;
+    } else {
+      libs = self.js
+    }
 
-    _.each(self.js, function (lib) {
+    _.each(libs, function (lib) {
       var tag = document.createElement("script");
       tag.src = 'js/' + self.libs['js'][lib];
       document.getElementsByTagName("head")[0].appendChild(tag);
       count++;
-      if (count >= self.js.length) {
+      if (count >= libs.length) {
         cb(true);
       };
     });

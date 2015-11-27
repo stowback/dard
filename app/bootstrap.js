@@ -104,4 +104,12 @@ var extend = function(protoProps, staticProps) {
   return child;
 };
 
+function callbackDownload(){
+  return true;
+}
+
+function startTracking () {
+  StartTracker();
+}
+
 dard.extend = extend;
