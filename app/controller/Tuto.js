@@ -63,8 +63,13 @@ var tutoView = YoloJS.View.extend({
       $('.tuto-content.show').addClass('hide').removeClass('show');
 
       // Next
-      if(!Daredevil.map){ new loadingGameView();  }
-      else{ Daredevil.router.navigate('/game'); }
+      console.log(Daredevil.navigation);
+      if(Daredevil.navigation == "webcam"){ webcamView(); }
+      else
+      {
+        if(!Daredevil.map){ new loadingGameView();  }
+        else{ Daredevil.router.navigate('/game'); }
+      }
     }
 
   },

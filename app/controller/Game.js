@@ -20,27 +20,7 @@ var gameView = YoloJS.View.extend({
 
     // Webcam
     if (Daredevil.navigation == "webcam") {
-      // try {
-      //   navigator.getUserMedia_({
-      //     video: true,
-      //     audio: false
-      //   }, startStream, function () {
-      //     $.event.trigger({
-      //       type: "notAllowWebcam",
-      //     });
-      //   });
-      // } catch (e) {
-      //   try {
-      //     navigator.getUserMedia_('video', startStream, function () {
-      //       $.event.trigger({
-      //         type: "notAllowWebcam",
-      //       });
-      //     });
-      //   } catch (e) {
-      //     errorStream(e);
-      //   }
-      // }
-      // startStream();
+      
 
       // $(document).on({
 
