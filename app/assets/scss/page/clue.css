@@ -1,0 +1,116 @@
+/*
+* clue.css
+*	manage presentation
+*/
+
+
+/* base */
+
+.page-clue{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/background_clue.jpg');
+	background-size: cover;
+	background-position: center;
+
+	.page-clue-container{
+		display: flex;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.clue-text{
+		margin-left: calc(50% - 960px/2);
+		flex: 1;
+
+		h2{
+			font-size: 1.4em;
+			font-family: $font-titles;
+			color: $color-primary;
+		}
+
+		h1{
+			font-family: $font-titles;
+			font-weight: 500;
+			font-size: 3.5em;
+			color: $color-white;
+			margin-bottom: 0.7em;
+		}
+
+		p{
+			font-size: 1.2em;
+			line-height: 1.8;
+			margin-bottom: 3em;
+		}
+
+		.btn{
+
+		}
+	}
+
+	.clue-photo{
+		display: block;
+		position: relative;
+		height: 90%;
+		margin-right: 0;
+	}
+}
+
+
+/* animations */
+
+.page-clue.show{
+	display: block;
+	animation: FadeIn 2s ease;
+	animation-fill-mode: both;
+
+	.clue-text{
+
+		h2, h1, p, a{
+			animation: SlideInLeftSmall 0.5s ease;
+			animation-delay: 0.8s;
+			animation-fill-mode: both;
+		}
+		h1{ animation-delay: 0.85s; }
+		p{ animation-delay: 0.9s; }
+		a{ animation-delay: 0.95s; }
+	}
+
+	.clue-photo{
+		animation: FadeIn 2s ease;
+		animation-delay: 0.4s;
+		animation-fill-mode: both;
+	}
+}
+
+.page-clue.hide{
+	display: block;
+	animation: FadeOut 2s ease;
+	animation-fill-mode: both;
+
+	.clue-text{
+
+		h2, h1, p, a{
+			animation: SlideOutLeftSmall 0.5s ease;
+			animation-delay: 0.4s;
+			animation-fill-mode: both;
+		}
+		h1{ animation-delay: 0.45s; }
+		p{ animation-delay: 0.5s; }
+		a{ animation-delay: 0.55s; }
+	}
+
+	.clue-photo{
+		animation: FadeOut 2s ease;
+		animation-delay: 0.4s;
+		animation-fill-mode: both;
+	}
+}
