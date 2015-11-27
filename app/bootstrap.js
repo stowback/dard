@@ -1,3 +1,7 @@
+/**
+ * YoloJS
+ * VC framework
+ */
 var YoloJS = function () {
 
   this.version = '0.0.1';
@@ -9,6 +13,9 @@ var dard = YoloJS.Daredevil = function () {
   this.loadTpl.apply(this);
 }
 
+/**
+ * Extend the object with Underscore
+ */
 _.extend(dard.prototype, {
 
   previousPage: null,
@@ -16,25 +23,27 @@ _.extend(dard.prototype, {
   tpl: [],
   tplLoaded: [],
   
+  // Process trigger for faceData of VisageSDK
   process: function (faceData) {
-    if (faceData.faceRotation[1] > 0.10) {
+
+    if (faceData.faceRotation[1] > 0.10) { // Look Left
       $.event.trigger({
         type: "lookLeft",
         time: new Date()
       });
-    } else if (faceData.faceRotation[1] <= 0.10 && faceData.faceRotation[1] >= -0.10) {
+    } else if (faceData.faceRotation[1] <= 0.10 && faceData.faceRotation[1] >= -0.10) { // Look center
       $.event.trigger({
         type: "lookCenter",
         time: new Date()
       });
-    } else {
+    } else { // Look right
       $.event.trigger({
         type: "lookRight",
         time: new Date()
       });
     }
 
-    if (faceData.eyeClosure[0] == 0 && faceData.eyeClosure[1] == 0) {
+    if (faceData.eyeClosure[0] == 0 && faceData.eyeClosure[1] == 0) { // Eyes Closed
       $.event.trigger({
         type: "eyesClosed",
         time: new Date()
@@ -42,6 +51,10 @@ _.extend(dard.prototype, {
     }
   },
 
+  /**
+   * loadTpl
+   * return trigger
+   */
   loadTpl: function () {
 
     var self = this;
@@ -57,13 +70,14 @@ _.extend(dard.prototype, {
       }));
     });
 
+    // Promise
     $.when.apply($, promise).then(function () {
       $.event.trigger('tplLoaded');
     });
   }
 });
 
-// Backbone extend
+// Extend function
 var extend = function(protoProps, staticProps) {
   var parent = this;
   var child;
