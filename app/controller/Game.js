@@ -32,21 +32,32 @@ var gameView = YoloJS.View.extend({
     // Webcam
     if (Daredevil.navigation == "webcam") 
     {
+      // Directions
       $(document).on({
-        lookLeft: function() { console.log('left'); self.game.setDaredevilMove("left"); },
-        lookRight: function () { console.log('right'); self.game.setDaredevilMove("right"); },
-        lookCenter: function () { console.log('center'); self.game.setDaredevilMove("center"); },
-        eyesClosed: function ()
-        {
-          console.log('closed eyes');
-          $('.game-pause').addClass('show').removeClass('hide');
-          if(!self.game.pause && !self.game.clue){ self.game.setPause(true); }
-        },
-        eyesOpen: function ()
-        {
-          console.log('eyes opened');
-          $('.game-pause').addClass('hide').removeClass('show');
-          if(self.game.pause && !self.game.clue){ self.game.setPause(false); }
+        lookLeft: function() { self.game.setDaredevilMove("left"); },
+        lookRight: function () {  self.game.setDaredevilMove("right"); },
+        lookCenter: function () { self.game.setDaredevilMove("center"); },
+      });
+
+      // Pauses
+      $(window).on('keydown', function (e)
+      {  
+        switch(e.keyCode) {
+          case 32:
+            // Pause 
+            if(!self.game.pause && !self.game.clue)
+            {
+              self.game.setPause(true);
+              $('.game-pause').addClass('show').removeClass('hide');
+            }
+
+            // Resume
+            else if(self.game.pause && !self.game.clue)
+            {
+              self.game.setPause(false);
+              $('.game-pause').addClass('hide').removeClass('show');
+            }
+          break;
         }
       });
     }

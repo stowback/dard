@@ -99,7 +99,7 @@ var loadingGameView = YoloJS.View.extend({
 
         // Game
         Daredevil.router.navigate('/game');
-      }, 2000);
+      }, 1000);
 
       $(document).on('eyesOpen', closeEyes);
 
