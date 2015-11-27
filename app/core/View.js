@@ -63,16 +63,20 @@ _.extend(View.prototype, {
 
     var self = this;
     var count = 0;
+
+    if (self.js.length <= 0) {
+      return cb(true);
+    };
+
     _.each(self.js, function (lib) {
       var tag = document.createElement("script");
       tag.src = 'js/' + self.libs['js'][lib];
       document.getElementsByTagName("head")[0].appendChild(tag);
       count++;
+      if (count >= self.js.length) {
+        cb(true);
+      };
     });
-
-    if (count == self.libs.length) {
-      cb(true);
-    };
   },
 
   // Load the hbs
@@ -120,7 +124,6 @@ _.extend(View.prototype, {
         animationOutro;
 
     self.load(data, function () {
-      
     
       self.loadJS(function (res) {
         self.app.apply(self, arguments);
@@ -163,7 +166,7 @@ _.extend(View.prototype, {
     YoloJS.previousPage = self;
   },
 
-  getTpl: function (tpl, data) {
+  getTpl: function (tpl, data, cb) {
 
     var hbs = YoloJS.tplLoaded[tpl],
         self = this;
@@ -181,7 +184,8 @@ _.extend(View.prototype, {
         app.tplLoaded[tpl] = hbs;
 
         var tpl = self.compile(tpl);
-        return tpl(data);
+        
+        cb(tpl(data), null);
       });
     }
   } 
