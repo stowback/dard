@@ -85,9 +85,8 @@ _.extend(View.prototype, {
 
     if (html) {
 
-      self.templating(self.compile(html), data, function () {
-        cb(null, true);
-      });
+      self.templating(self.compile(html), data)
+      cb(null, true);
     } else {
 
       $.ajax({
@@ -96,9 +95,8 @@ _.extend(View.prototype, {
 
         app.tplLoaded[self.tpl] = hbs;
 
-        self.templating(self.compile(hbs), data, function () {
-          cb(null, true);
-        });
+        self.templating(self.compile(hbs), data);
+        cb(null, true);
       });
     }
   },
@@ -108,19 +106,12 @@ _.extend(View.prototype, {
     return Handlebars.compile(html);
   },
 
-  templating: function (template, data, cb) {
+  templating: function (template, data) {
 
     var self = this;
 
-    $.ajax({
-      url: "views/" + this.tpl + ".hbs",
-    }).done(function (hbs) {
-      
-      var tpl = Handlebars.compile(hbs);  
-      $(self.tagName).append('<div class="page page-' + self.pageName + '">' + tpl(data) + '</div>');
-      cb(null, true);
-    });
-  },
+    $(self.tagName).append('<div class="page page-' + self.pageName + '">' + template(data) + '</div>');
+  }, 
 
   // Render the page
   render: function (data) {
@@ -170,7 +161,30 @@ _.extend(View.prototype, {
     };
 
     YoloJS.previousPage = self;
-  }
+  },
+
+  getTpl: function (tpl, data) {
+
+    var hbs = YoloJS.tplLoaded[tpl],
+        self = this;
+
+    if (hbs) {
+      
+      var tpl = self.compile(tpl);
+      return tpl(data);
+    } else {
+
+      $.ajax({
+        url: "views/" + tpl + ".hbs",
+      }).done(function (hbs) {
+
+        app.tplLoaded[tpl] = hbs;
+
+        var tpl = self.compile(tpl);
+        return tpl(data);
+      });
+    }
+  } 
 });
 
 View.extend = extend;
