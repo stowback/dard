@@ -1,4 +1,7 @@
- var View = YoloJS.View = function (options) {
+/**
+ * YoloJS View object 
+ */
+var View = YoloJS.View = function (options) {
 
   this.libs = new Array();
   this.libs['js'] = new Array();
@@ -14,9 +17,11 @@
   YoloJS.curentView = this;
   this.previousPage = null;
 
+  // Start the initialize
   this.initialize.apply(this, arguments);
 };
 
+// Extend the View.Prototype
 _.extend(View.prototype, {
 
   /**
@@ -48,7 +53,7 @@ _.extend(View.prototype, {
   // JS loaded
   js: [],
 
-  
+  // Iniitialize the View
   initialize: function () {
 
     if (YoloJS.previousPage == null) {
@@ -87,12 +92,13 @@ _.extend(View.prototype, {
 
     var html = app.tplLoaded[self.tpl];
 
+    // IF already in Array of Template 
     if (html) {
 
       self.templating(self.compile(html), data)
       cb(null, true);
     } else {
-
+      // If not we go load it
       $.ajax({
         url: "views/" + this.tpl + ".hbs",
       }).done(function (hbs) {
@@ -105,11 +111,13 @@ _.extend(View.prototype, {
     }
   },
 
+  // Compile the HBS file
   compile: function (html) {
 
     return Handlebars.compile(html);
   },
 
+  // Append the hbs and put it data
   templating: function (template, data) {
 
     var self = this;
@@ -131,9 +139,9 @@ _.extend(View.prototype, {
 
       if (YoloJS.previousPage) {
         $('.page-' + YoloJS.previousPage.pageName).addClass('hide');
-        animationOutro = YoloJS.previousPage.timingAnimationOutro;
+        animationOutro = YoloJS.previousPage.timingAnimationOutro; // Use the previous View for animation Outro Delay
       } else {
-        animationOutro = 0;
+        animationOutro = 0; // If not PreviousPage so we put it to 0
       }
 
       setTimeout(function(){
@@ -155,6 +163,7 @@ _.extend(View.prototype, {
     $(self.tagName + ' .page-' + self.pageName).addClass('show');
   },
 
+  // Delete the previous Page
   deleteOldPage: function () {
 
     var self = this;
@@ -166,6 +175,7 @@ _.extend(View.prototype, {
     YoloJS.previousPage = self;
   },
 
+  // Get template Handlebars directly in view method, no need to create a new view
   getTpl: function (tpl, data, cb) {
 
     var hbs = app.tplLoaded[tpl],
