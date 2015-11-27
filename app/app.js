@@ -1,5 +1,5 @@
 var Yolo = YoloJS.Daredevil.extend({
-  tpl: ['about', 'tuto', 'final', 'game', 'goal', 'help', 'home', 'intro', 'loading', 'webcam', 'win', 'clue'],
+  tpl: ['about', 'tuto', 'final', 'game', 'goal', 'help', 'home', 'intro', 'loading', 'webcam', 'win', 'clue', 'finish'],
   tplLoaded: []
 });
 
@@ -34,7 +34,7 @@ $(function () {
     new loadingGameView();
   });
 
-  router.add(/final/, function () {
+  router.add(/about/, function () {
 
     new finalView();
   });

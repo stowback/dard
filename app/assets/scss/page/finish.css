@@ -1,0 +1,91 @@
+/*
+* finish.css
+* manage finish game page styles
+*/
+
+
+/* base */
+
+.page-finish{
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/background.jpg);
+	background-size: cover;
+	background-position: center;
+
+	.page-finish-photo{
+		display: block;
+		width: 300px;
+	}
+
+	h1{
+		font-family: $font-titles;
+		font-size: 4em;
+		font-weight: 900;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	h2{
+		font-size: 1.5em;
+		letter-spacing: 0.07em;
+		margin-bottom: 2em;
+	}
+
+	p{
+		font-size: 1.2em;
+		width: 600px;
+		text-align: center;
+		letter-spacing: 0.05em;
+		margin-bottom: 3em;
+	}
+
+	.btn{ margin-bottom: 2em; }
+	.btn:last-child{ margin-bottom: 0; }
+}
+
+
+/* animations */
+
+.page-finish.show{
+	display: flex;
+	animation: FadeIn 3s ease;
+	animation-fill-mode: both;
+
+	.page-finish-photo, h1, h2, p, a.btn{
+		animation: SlideInDownSmall 1s ease;
+		animation-delay: 1.4s;
+		animation-fill-mode: both;
+	}
+
+	h1{ animation-delay: 1.45s; }
+	h2{ animation-delay: 1.50s; }
+	p{ animation-delay: 1.55s; }
+	a.btn{ animation-delay: 1.60s; }
+	a.btn:nth-child(2){ animation-delay: 1.65s; }
+}
+
+.page-finish.hide{
+	display: flex;
+	animation: FadeOut 3s ease;
+	animation-fill-mode: both;
+
+	.page-finish-photo, h1, h2, p, a.btn{
+		animation: SlideOutUpSmall 2s ease;
+		animation-delay: 0.4s;
+		animation-fill-mode: both;
+	}
+
+	h1{ animation-delay: 0.45s; }
+	h2{ animation-delay: 0.50s; }
+	p{ animation-delay: 0.55s; }
+	a.btn{ animation-delay: 0.6s; }
+	a.btn:nth-child(2){ animation-delay: 0.65s; }
+}

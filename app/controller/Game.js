@@ -27,7 +27,11 @@ var gameView = YoloJS.View.extend({
     this.game.callbacks.onLose = function (data){ console.log(data); };
 
     // Clue
-    this.game.callbacks.onClue = function (data){ self.getClue(data); };
+    this.game.callbacks.onClue = function (data)
+    {
+      self.getFinish(data);
+      //self.getClue(data); 
+    };
 
     // Webcam
     if (Daredevil.navigation == "webcam") {
@@ -52,7 +56,6 @@ var gameView = YoloJS.View.extend({
     {
       $(window).on('keydown', function (e)
       {  
-        console.log(e.keyCode);
         switch(e.keyCode) {
           case 37: self.game.setDaredevilMove("left"); break;
           case 39: self.game.setDaredevilMove("right"); break;
@@ -60,20 +63,14 @@ var gameView = YoloJS.View.extend({
             // Pause 
             if(!self.game.pause && !self.game.clue)
             {
-              // Update
               self.game.setPause(true);
-
-              // Show
               $('.game-pause').addClass('show').removeClass('hide');
             }
 
             // Resume
             else if(self.game.pause && !self.game.clue)
             {
-              // Update
               self.game.setPause(false);
-
-              // Hide
               $('.game-pause').addClass('hide').removeClass('show');
             }
           break;
@@ -113,6 +110,36 @@ var gameView = YoloJS.View.extend({
         self.game.resume();
         elem.addClass('hide').removeClass('show');
         setTimeout(function (){ elem.remove(); }, 2000);
+      });
+    });
+
+  },
+
+
+  // Finish
+  getFinish: function (data)
+  {
+    alert('helo');
+    // Reference
+    var self = this;
+
+    // Template
+    this.getTpl('finish', self.game.map.config.messages.lose, function (template)
+    {
+      // Elem
+      var elem = $(template);
+      $('.page-game').append($(template));
+      elem = $('.page-finish');
+
+      // Show
+      elem.addClass('show').removeClass('hide');
+
+      // Action
+      elem.find('.btn.btn-again').on('click', function (e)
+      {
+        e.preventDefault();
+        elem.addClass('hide').removeClass('show');
+        setTimeout(function (){ new gameView(); }, 2000);
       });
     });
 

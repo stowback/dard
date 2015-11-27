@@ -78,14 +78,16 @@
 	"messages": 
 	{
 		"lose": {
-			"photo": "defaite.jpg",
-			"name": "Dfaite Bouzouk",
-			"text": "Defaite ipsum dolor est"
+			"photo": "lose.png",
+			"title": "Defeat",
+			"subtitle": "You are still not a complete superhero !",
+			"text": "You tried to be this ridiculous superhero, but obvisouly you failed. You can see that you're not strong enough to defend Hell's Kitchen. Join my team. Or continue to ridiculing you."
 		},
 		"win": {
-			"photo": "victoire.jpg",
-			"name": "Victoire Bouzouk",
-			"text": "Victoire ipsum dolor est"
+			"photo": "perso-seul.png",
+			"title": "Congrat",
+			"subtitle": "You are finally a super-hero !",
+			"text": "Amazing, you definitively are enough strong to be a superhero : what a demonstration ! We need you to continue to defend Hell's Kitchen, so please join us into the season 2 of Daredevil."
 		}	
 	},
 	"paths": {

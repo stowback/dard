@@ -170,17 +170,17 @@
 
  			figure{
  				margin-bottom: 1em;
- 			}
+ 				border-color: rgba(#fefefe, 0.4);
 
- 			&:hover figure img, &.active figure img{ opacity: 1; }
- 			&:hover a, &.active a{ color: $color-white; }
+ 				img{ opacity: 0.4; }
+ 			}
 
  			a{
  				position: relative;
  				display: block;
  				font-family: $font-titles;
  				font-size: 1.2em;
- 				color: rgba(#fefefe, 0.8);
+ 				color: rgba(#fefefe, 0.4);
  				text-transform: uppercase;
  				letter-spacing: 0.08em;
  				text-align: center;
@@ -195,13 +195,15 @@
 					width: 10px;
 					height: 2px;
 					background-color: $color-white;
-					opacity: 0.8;
+					opacity: 0.4;
 					transition: transform 0.2s ease, opacity 0.2s ease;
  				}
  			}
-
+			
+			&.active a{ color: $color-white; }
  			&.active a:after{ transform: scaleX(3); opacity: 1; }
  			&.active figure{ border-color: $color-white; }
+ 			&.active figure img{ opacity: 1; }
 
  			&:last-child{ margin-right: 0; }
  		}
@@ -217,7 +219,7 @@
 
 				figure{ border-color: $color-white; }
 				figure img{ opacity: 1; }
-				a{ border-color: $color-white; }
+				a{ color: $color-white; }
 				a:after{ opacity: 1; }
 			}
  		}

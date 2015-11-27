@@ -127,6 +127,6 @@ a{
 @import 'page/loading';
 @import 'page/pause';
 @import 'page/clue';
+@import 'page/finish';
 /*@import 'page/configuration';*/
 @import 'page/final';
-@import 'page/win';
