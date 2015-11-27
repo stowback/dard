@@ -2,6 +2,6 @@ var winView = YoloJS.View.extend({
 
   tagName: '#app',
   pageName: "win",
-  tpl: 'win',
+  tpl: 'lose',
   timingAnimationIntro: 1000,
 });

@@ -174,7 +174,7 @@ _.extend(View.prototype, {
     if (hbs) {
       
       var tpl = self.compile(tpl);
-      return tpl(data);
+      return cb(tpl(data), null);
     } else {
 
       $.ajax({
@@ -183,9 +183,11 @@ _.extend(View.prototype, {
 
         app.tplLoaded[tpl] = hbs;
 
+        console.log('salut')
+
         var tpl = self.compile(tpl);
         
-        cb(tpl(data), null);
+        return cb(tpl(data), null);
       });
     }
   } 
