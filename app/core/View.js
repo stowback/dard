@@ -208,7 +208,7 @@ _.extend(View.prototype, {
         return cb(template(data), null);
       });
     }
-  } 
+  }
 });
 
 View.extend = extend;

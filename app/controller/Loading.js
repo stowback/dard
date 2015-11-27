@@ -41,8 +41,6 @@ var loadingGameView = YoloJS.View.extend({
       // Create map
       Daredevil.map = new Map(config);
 
-      startTracking();
-
       // Init
       Daredevil.map.init(
         function (message){ self.setLoading(message); },
@@ -91,14 +89,23 @@ var loadingGameView = YoloJS.View.extend({
     // Webcam
     if(Daredevil.navigation == "webcam")
     {
+
+      StartTracker();
+
       $(document).on('eyesClosed', function ()
       {
+
+        console.log("salut bb")
 
         // Remove event
         $(document).off('eyesClosed');
 
         // Game
         Daredevil.router.navigate('/game');
+      });
+
+      $(document).on('lookLeft', function () {
+        console.log('left');
       });
 
       setTimeout(function (){ self.setLoading("Close your eyes to start"); }, 2000);

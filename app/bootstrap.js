@@ -108,8 +108,4 @@ function callbackDownload(){
   return true;
 }
 
-function startTracking () {
-  StartTracker();
-}
-
 dard.extend = extend;
