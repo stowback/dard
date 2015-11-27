@@ -183,8 +183,8 @@
 		{
 			
 			// Characters sounds
-			this.map.daredevil.fadeIn(1000);
-			this.map.vilain.fadeIn(1200);
+			self.map.daredevil.fadeIn(1000);
+			self.map.vilain.fadeIn(1200);
 
 			// Time
 			self.time.started = new Date().getTime();
