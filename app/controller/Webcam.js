@@ -12,13 +12,43 @@ var webcamView = YoloJS.View.extend({
   // App
   app: function ()
   {
-    alert('hello');
+
     // Allow
     $(document).on(
     {
       allowWebcam: function ()
       {
-        alert('allowed');
+        // Try webcam stream
+        try
+        {
+          navigator.getUserMedia_({
+            video: true,
+            audio: false
+          }, startStream, function () {
+            $.event.trigger({
+              type: "notAllowWebcam",
+            });
+          });
+        }
+        catch (e)
+        {
+          try {
+            navigator.getUserMedia_('video', startStream, function () {
+              $.event.trigger({
+                type: "notAllowWebcam",
+              });
+            });
+          } catch (e) {
+            errorStream(e);
+          }
+        }
+
+        // Start stream
+        startStream();
+
+        // Redirect
+        if(!Daredevil.map){ new loadingGameView();  }
+        else{ Daredevil.router.navigate('/game'); }
       } 
     });
   }
