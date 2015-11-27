@@ -17,11 +17,10 @@ $(function () {
   });
 
   router.add(/game/, function () {
-
     if (Daredevil.map != null) {
       new gameView(); 
     } else {
-      new loadingGameView();
+      Daredevil.router.navigate('/configuration');
     }
   });
 
