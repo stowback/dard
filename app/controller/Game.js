@@ -88,10 +88,12 @@ var gameView = YoloJS.View.extend({
   // Clue
   getClue: function (clue)
   {
-    
+    console.log(clue);
     // Template
     this.getTpl('clue', clue, function (template)
     {
+      console.log('loaded');
+      console.log(template);
       $('.page-game').append($(template));
     });
 
