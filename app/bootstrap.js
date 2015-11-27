@@ -45,24 +45,21 @@ _.extend(dard.prototype, {
   loadTpl: function () {
 
     var self = this;
+    var promise = [];
 
-    self.tpl.forEach( function (js) {
+    _.each(self.tpl ,function (tpl) {
 
-      $.ajax({
-        url: "views/" + js + ".hbs",
-      }).done(function (hbs) {
-        self.tplLoaded[js] = hbs;
-      });
+      promise.push($.ajax({
+        url: "views/" + tpl + ".hbs",
+        complete: function (hbs) {
+          self.tplLoaded[tpl] = hbs.responseText; 
+        }
+      }));
     });
 
-    console.log(self.tplLoaded.length)
-
-    if (self.tplLoaded.length == self.tpl.length) {
-      console.log("RENTRE DEDEANS PUTAIN")
-      $.event.trigger({
-        type: "tplLoaded"
-      });
-    };
+    $.when.apply($, promise).then(function () {
+      $.event.trigger('tplLoaded');
+    });
   }
 });
 
