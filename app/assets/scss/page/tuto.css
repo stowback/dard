@@ -29,7 +29,7 @@
 		z-index: 300;
 		top: calc(50% - 250px);
 		left: calc(50% - 400px);
-		border: 2px dashed rgba(#8c1329, 0.3);
+		border: 2px dashed rgba(#dc1f26, 0.2);
 		overflow: hidden;
 	}
 }
@@ -65,7 +65,7 @@
 	h2{
 		font-family: $font-titles;
 		font-size: 1.2em;
-		color: #8c1329;
+		color: #ac161b;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
 		text-align: center;
@@ -147,7 +147,7 @@
 
 .tuto-goal{
 
-	p{ margin-top: 2em; margin-bottom: 1em; }
+	p{ margin-top: 2em; margin-bottom: 1em; line-height: 1.5; }
 	p:last-child{ margin-bottom: 0; }
 
 }
@@ -166,7 +166,7 @@
  		.choice{
  			display: block;
  			cursor: pointer;
- 			margin-right: 40px;
+ 			margin-right: 100px;
 
  			figure{
  				margin-bottom: 1em;

@@ -92,13 +92,18 @@ var loadingGameView = YoloJS.View.extend({
 
       StartTracker();
 
-      $(document).on('eyesClosed', function ()
-      {
-        $(document).off('eyesClosed');
-        Daredevil.router.navigate('/game');
-      });
+      var closeEyes = _.debounce(function () {
 
-      setTimeout(function (){ self.setLoading("Close your eyes to start"); }, 2000);
+        // Remove event
+        $(document).off('eyesOpen');
+
+        // Game
+        Daredevil.router.navigate('/game');
+      }, 2000);
+
+      $(document).on('eyesOpen', closeEyes);
+
+      setTimeout(function (){ self.setLoading("Maintain your eyes closed to start"); }, 2000);
     }
 
     // Keyboard

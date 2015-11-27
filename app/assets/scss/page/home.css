@@ -19,17 +19,17 @@
     align-items: center;
     position: absolute;
     top: 0;
-    left: calc(50% - 250px);
+    left: calc(50% - 300px);
     height: calc(100% - 4em);
     text-align: center;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     text-align: center;
     
     img.logo-home{
       display: inline-block;
       width: auto;
-      height: 50%;
+      height: 70%;
       max-height: 450px;
       margin-bottom: -2em;
     }
