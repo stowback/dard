@@ -187,7 +187,7 @@ _.extend(View.prototype, {
 
         var tpl = self.compile(tpl);
         
-        cb(tpl(data), null);
+        return cb(tpl(data), null);
       });
     }
   } 
