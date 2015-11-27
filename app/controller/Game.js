@@ -27,11 +27,7 @@ var gameView = YoloJS.View.extend({
     this.game.callbacks.onLose = function (data){ self.getFinish(self.game.map.config.messages.lose); };
 
     // Clue
-    this.game.callbacks.onClue = function (data)
-    {
-      self.getFinish(data);
-      //self.getClue(data); 
-    };
+    this.game.callbacks.onClue = function (data){ self.getClue(data); };
 
     // Webcam
     if (Daredevil.navigation == "webcam") {
@@ -116,7 +112,7 @@ var gameView = YoloJS.View.extend({
     var self = this;
 
     // Template
-    this.getTpl('finish', self.game.map.config.messages.lose, function (template)
+    this.getTpl('finish', data, function (template)
     {
       // Elem
       var elem = $(template);
