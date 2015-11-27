@@ -8,7 +8,7 @@ var introView = YoloJS.View.extend({
   tagName: '#app',
   pageName: 'intro',
   tpl: 'intro',
-  timingAnimationIntro: 3000,
+  timingAnimationOutro: 2000,
 
   app: function () {
 

@@ -7,8 +7,6 @@ var gameView = YoloJS.View.extend({
 
   app: function () {
 
-    alert('game');
-
     var game = new Game(Daredevil.map);
 
     game.init(function () {
@@ -19,6 +17,8 @@ var gameView = YoloJS.View.extend({
     game.callbacks.onWin = function (data){ console.log(data); };
     game.callbacks.onLose = function (data){ console.log(data); };
     game.callbacks.onClue = function (data){ console.log(data); };
+
+    console.log(Daredevil.navigation);
 
     if (Daredevil.navigation == "webcam") {
       try {

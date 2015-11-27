@@ -4,7 +4,7 @@ var tutoView = YoloJS.View.extend({
   tagName: '#app',
   pageName: "tuto",
   tpl: 'tuto',
-  timingAnimationIntro: 0,
+  timingAnimationOutro: 3000,
 
   // Vue
   current: 1,

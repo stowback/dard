@@ -30,6 +30,11 @@ $(function () {
     new tutoView();
   });
 
+  router.add(/loading/, function () {
+
+    new loadingGameView();
+  });
+
   router.add(/final/, function () {
 
     new finalView();
