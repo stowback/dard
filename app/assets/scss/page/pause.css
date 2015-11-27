@@ -1,0 +1,67 @@
+/*
+* pause.css
+*	manage pause page styles
+*/
+
+
+/* base */
+
+.game-pause{
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(../img/background_pause.png);
+	background-size: cover;
+	background-position: center;
+
+	h2{
+		font-family: $font-titles;
+		font-size: 4em;
+		font-weight: 900;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		text-align: center;
+	}
+
+	p{
+		font-size: 1.2em;
+		color: rgba(#fefefe, 0.7);
+		margin-top: 0.3em;
+		text-align: center;
+	}
+}
+
+
+/* animations */
+
+.game-pause.show{
+	display: flex;
+	animation: FadeIn 3s ease;
+	animation-fill-mode: both;
+
+	h2, p{
+		animation: SlideInDownSmall 1s ease;
+		animation-delay: 1.3s;
+		animation-fill-mode: both;
+	}
+	h2{ animation-delay: 1.4s; }
+}
+
+.game-pause.hide{
+	display: flex;
+	animation: FadeOut 3s ease;
+	animation-fill-mode: both;
+
+	h2, p{
+		animation: SlideOutDownSmall 1s ease;
+		animation-delay: 0.4s;
+		animation-fill-mode: both;
+	}
+	p{ animation-delay: 0.5s; }
+}

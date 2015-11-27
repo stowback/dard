@@ -28,27 +28,6 @@ var gameView = YoloJS.View.extend({
 
     // Webcam
     if (Daredevil.navigation == "webcam") {
-      // try {
-      //   navigator.getUserMedia_({
-      //     video: true,
-      //     audio: false
-      //   }, startStream, function () {
-      //     $.event.trigger({
-      //       type: "notAllowWebcam",
-      //     });
-      //   });
-      // } catch (e) {
-      //   try {
-      //     navigator.getUserMedia_('video', startStream, function () {
-      //       $.event.trigger({
-      //         type: "notAllowWebcam",
-      //       });
-      //     });
-      //   } catch (e) {
-      //     errorStream(e);
-      //   }
-      // }
-      // startStream();
 
       // $(document).on({
 
@@ -70,9 +49,31 @@ var gameView = YoloJS.View.extend({
     {
       $(window).on('keydown', function (e)
       {  
+        console.log(e.keyCode);
         switch(e.keyCode) {
           case 37: game.setDaredevilMove("left"); break;
           case 39: game.setDaredevilMove("right"); break;
+          case 32:
+            // Pause 
+            if(!game.pause && !game.clue)
+            {
+              // Update
+              game.setPause(true); 
+
+              // Show
+              $('.game-pause').addClass('show').removeClass('hide');
+            }
+
+            // Resume
+            else if(game.pause && !game.clue)
+            {
+              // Update
+              game.setPause(false); 
+
+              // Hide
+              $('.game-pause').addClass('hide').removeClass('show');
+            }
+          break;
         }
       });
     }
@@ -87,11 +88,11 @@ var gameView = YoloJS.View.extend({
   // Clue
   getClue: function (clue)
   {
-
+    
     // Template
     this.getTpl('clue', clue, function (template)
     {
-      console.log(template);
+      $('.page-game').append($(template));
     });
 
   },

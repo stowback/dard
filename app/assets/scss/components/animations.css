@@ -12,10 +12,10 @@
 
 /* slide down */
 
-@keyframes SlideInDownSmall{ 0%{ opacity: 0; transform: translate3d(0, -2em, 0); }
+@keyframes SlideInDownSmall{ 0%{ opacity: 0; transform: translate3d(0, -30px, 0); }
 						100%{ opacity: 1; transform: none; } }
 @keyframes SlideOutDownSmall{ 0%{ opacity: 1; transform: none; }
-						100%{ opacity: 0; transform: translate3d(0, -2em, 0); } }
+						100%{ opacity: 0; transform: translate3d(0, -30px, 0); } }
 
 @keyframes SlideInDownBig{ 0%{ opacity: 0; transform: translate3d(0, -6em, 0); }
 						100%{ opacity: 1; transform: none; } }
@@ -25,10 +25,10 @@
 
 /* slide up */
 
-@keyframes SlideInUpSmall{ 0%{ opacity: 0; transform: translate3d(0, 2em, 0); }
+@keyframes SlideInUpSmall{ 0%{ opacity: 0; transform: translate3d(0, 30px, 0); }
 						100%{ opacity: 1; transform: none; } }
 @keyframes SlideOutUpSmall{ 0%{ opacity: 1; transform: none; }
-						100%{ opacity: 0; transform: translate3d(0, 2em, 0); } }
+						100%{ opacity: 0; transform: translate3d(0, 30px, 0); } }
 						
 
 

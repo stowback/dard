@@ -125,5 +125,6 @@ a{
 @import 'page/intro';
 @import 'page/tuto';
 @import 'page/loading';
+@import 'page/pause';
 /*@import 'page/configuration';*/
 @import 'page/final';
