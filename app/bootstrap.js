@@ -46,21 +46,23 @@ _.extend(dard.prototype, {
 
     var self = this;
 
-    console.log(this)
-
-    _.each(self.tpl, function (js) {
+    self.tpl.forEach( function (js) {
 
       $.ajax({
-        url: "views/" + self.tpl + ".hbs",
+        url: "views/" + js + ".hbs",
       }).done(function (hbs) {
-        
-        self.tplLoaded[self.tpl] = hbs;
+        self.tplLoaded[js] = hbs;
       });
-
-      if (self.tplLoaded.length > self.tpl.length) {
-        return true;
-      };
     });
+
+    console.log(self.tplLoaded.length)
+
+    if (self.tplLoaded.length == self.tpl.length) {
+      console.log("RENTRE DEDEANS PUTAIN")
+      $.event.trigger({
+        type: "tplLoaded"
+      });
+    };
   }
 });
 
