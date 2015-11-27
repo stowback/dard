@@ -125,7 +125,8 @@ _.extend(View.prototype, {
   // Render the page
   render: function (data) {
     
-    var self = this;
+    var self = this,
+        animationOutro;
 
     self.load(data, function () {
       
@@ -136,13 +137,16 @@ _.extend(View.prototype, {
 
       if (YoloJS.previousPage) {
         $('.page-' + YoloJS.previousPage.pageName).addClass('hide');
-      };
+        animationOutro = YoloJS.previousPage.timingAnimationOutro;
+      } else {
+        animationOutro = 0;
+      }
 
       setTimeout(function(){
         self.setPageClass();
         self.deleteOldPage();
 
-      }, self.timingAnimationOutro);
+      }, animationOutro);
 
     });
   },
