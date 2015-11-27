@@ -48,7 +48,13 @@ _.extend(dard.prototype, {
         type: "eyesClosed",
         time: new Date()
       });
+    } else if (faceData.eyeClosure[0] == 1 && faceData.eyeClosure[1] == 1) {
+      $.event.trigger({
+        type: "eyesOpen",
+        time: new Date()
+      });
     }
+
   },
 
   /**
