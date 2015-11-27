@@ -35,7 +35,7 @@ var gameView = YoloJS.View.extend({
       // Directions
       $(document).on({
         lookLeft: function() { self.game.setDaredevilMove("left"); },
-        lookRight: function () {  self.game.setDaredevilMove("right"); },
+        lookRight: function () { self.game.setDaredevilMove("right"); },
         lookCenter: function () { self.game.setDaredevilMove("center"); },
       });
 
