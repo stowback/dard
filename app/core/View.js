@@ -122,6 +122,10 @@ _.extend(View.prototype, {
 
     var self = this;
 
+    // var $app = $(self.tagName);
+
+    // if ($app.find('.page .page-' + self.pageName)) {};
+
     $(self.tagName).append('<div class="page page-' + self.pageName + '">' + template(data) + '</div>');
   }, 
 
@@ -138,7 +142,7 @@ _.extend(View.prototype, {
       });
 
       if (YoloJS.previousPage) {
-        $('.page-' + YoloJS.previousPage.pageName).addClass('hide');
+        $('.page-' + YoloJS.previousPage.pageName).first().addClass('hide');
         animationOutro = YoloJS.previousPage.timingAnimationOutro; // Use the previous View for animation Outro Delay
       } else {
         animationOutro = 0; // If not PreviousPage so we put it to 0
@@ -169,7 +173,7 @@ _.extend(View.prototype, {
     var self = this;
 
     if (YoloJS.previousPage) {
-      $('.page-' + YoloJS.previousPage.pageName).remove();
+      $('.page-' + YoloJS.previousPage.pageName + '.hide').remove();
     };
 
     YoloJS.previousPage = self;
