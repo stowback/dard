@@ -111,7 +111,7 @@ var gameView = YoloJS.View.extend({
   // Finish
   getFinish: function (data)
   {
-    alert('helo');
+    
     // Reference
     var self = this;
 
