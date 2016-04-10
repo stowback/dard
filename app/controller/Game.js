@@ -27,19 +27,38 @@ var gameView = YoloJS.View.extend({
     this.game.callbacks.onLose = function (data){ self.getFinish(self.game.map.config.messages.lose); };
 
     // Clue
-    this.game.callbacks.onClue = function (data)
-    {
-      self.getFinish(data);
-      //self.getClue(data); 
-    };
+    this.game.callbacks.onClue = function (data){ self.getClue(data); };
 
     // Webcam
-    if (Daredevil.navigation == "webcam") {
-
+    if (Daredevil.navigation == "webcam") 
+    {
+      // Directions
       $(document).on({
         lookLeft: function() { self.game.setDaredevilMove("left"); },
         lookRight: function () { self.game.setDaredevilMove("right"); },
-        lookCenter: function () { self.game.setDaredevilMove("center"); }
+        lookCenter: function () { self.game.setDaredevilMove("center"); },
+      });
+
+      // Pauses
+      $(window).on('keydown', function (e)
+      {  
+        switch(e.keyCode) {
+          case 32:
+            // Pause 
+            if(!self.game.pause && !self.game.clue)
+            {
+              self.game.setPause(true);
+              $('.game-pause').addClass('show').removeClass('hide');
+            }
+
+            // Resume
+            else if(self.game.pause && !self.game.clue)
+            {
+              self.game.setPause(false);
+              $('.game-pause').addClass('hide').removeClass('show');
+            }
+          break;
+        }
       });
     }
 
@@ -116,7 +135,7 @@ var gameView = YoloJS.View.extend({
     var self = this;
 
     // Template
-    this.getTpl('finish', self.game.map.config.messages.lose, function (template)
+    this.getTpl('finish', data, function (template)
     {
       // Elem
       var elem = $(template);

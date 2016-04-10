@@ -64,21 +64,26 @@ _.extend(View.prototype, {
   },
 
   // Load the JS by js array, libs is in core/View.js
-  loadJS: function (cb) {
+  loadJS: function (cb, javascript) {
 
     var self = this;
     var count = 0;
+    var libs;
 
-    if (self.js.length <= 0) {
+    if (self.js.length <= 0 && !javascript) {
       return cb(true);
-    };
+    } else if (javascript) {
+      libs = javascript;
+    } else {
+      libs = self.js
+    }
 
-    _.each(self.js, function (lib) {
+    _.each(libs, function (lib) {
       var tag = document.createElement("script");
       tag.src = 'js/' + self.libs['js'][lib];
       document.getElementsByTagName("head")[0].appendChild(tag);
       count++;
-      if (count >= self.js.length) {
+      if (count >= libs.length) {
         cb(true);
       };
     });
@@ -122,6 +127,10 @@ _.extend(View.prototype, {
 
     var self = this;
 
+    // var $app = $(self.tagName);
+
+    // if ($app.find('.page .page-' + self.pageName)) {};
+
     $(self.tagName).append('<div class="page page-' + self.pageName + '">' + template(data) + '</div>');
   }, 
 
@@ -138,7 +147,7 @@ _.extend(View.prototype, {
       });
 
       if (YoloJS.previousPage) {
-        $('.page-' + YoloJS.previousPage.pageName).addClass('hide');
+        $('.page-' + YoloJS.previousPage.pageName).first().addClass('hide');
         animationOutro = YoloJS.previousPage.timingAnimationOutro; // Use the previous View for animation Outro Delay
       } else {
         animationOutro = 0; // If not PreviousPage so we put it to 0
@@ -169,7 +178,7 @@ _.extend(View.prototype, {
     var self = this;
 
     if (YoloJS.previousPage) {
-      $('.page-' + YoloJS.previousPage.pageName).remove();
+      $('.page-' + YoloJS.previousPage.pageName + '.hide').remove();
     };
 
     YoloJS.previousPage = self;
@@ -199,7 +208,7 @@ _.extend(View.prototype, {
         return cb(template(data), null);
       });
     }
-  } 
+  }
 });
 
 View.extend = extend;

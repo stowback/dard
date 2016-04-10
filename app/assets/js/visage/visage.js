@@ -719,14 +719,14 @@ function drawGaze(trackData){
 * Gets executed after all the preparation is done (all the files have been downloaded) and tracker is ready to start tracking.
 * In this case it enables buttons on the page.
 */
-function callbackDownload(){
-  //var btnStart = document.getElementById('buttonStart');
-  //var btnStop = document.getElementById('buttonStop');
-  //btnStart.disabled = false;
-  //btnStop.disabled = false;
-  //Start tracking
-  StartTracker();
-}
+// function callbackDownload(){
+//   //var btnStart = document.getElementById('buttonStart');
+//   //var btnStop = document.getElementById('buttonStop');
+//   //btnStart.disabled = false;
+//   //btnStop.disabled = false;
+//   //Start tracking
+//   StartTracker();
+// }
 
 var timeme = false;
 var trackerReturnState = "TRACK_STAT_OFF";
@@ -826,7 +826,7 @@ function processFrame(){
 
   Daredevil.process(faceData);
 }
-//Function called when Start is clicked, tracking is resumed/started
+// //Function called when Start is clicked, tracking is resumed/started
 function StartTracker(){
   
   startTracking = true;
@@ -876,7 +876,7 @@ function startStream(stream){
       
       //set up tracker and licensing, valid license needs to be provided
       m_Tracker = new Tracker("js/visage/visage/Facial Features Tracker - Asymmetric.cfg");
-      m_Tracker.initializeLicenseManager("122-250-422-916-217-370-249-855-960-549-258.vlc");
+      m_Tracker.initializeLicenseManager("621-779-695-382-628-293-368-416-356-668-314.vlc");
       faceData = new FaceData();
   
       //Use request animation frame mechanism - slower but with smoother animation

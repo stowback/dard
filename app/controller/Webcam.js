@@ -6,7 +6,6 @@ var webcamView = YoloJS.View.extend({
   pageName: "wbecam",
   tpl: 'webcam',
   timingAnimationOutro: 0,
-  js: ['bezier', 'visage', 'visageSDK'],
 
 
   // App

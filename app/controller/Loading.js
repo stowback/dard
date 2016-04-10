@@ -26,7 +26,7 @@ var loadingGameView = YoloJS.View.extend({
     this.container = $('.loading-container');
 
     // Start
-    this.setLoading("Download datas");
+    this.setLoading("Downloading datas");
     
     // Request
     var jsonCall = $.getJSON('js/sound-engine/config.json');
@@ -46,8 +46,11 @@ var loadingGameView = YoloJS.View.extend({
         function (message){ self.setLoading(message); },
         function ()
         {
-          self.setLoading("Initialisation of paths"); 
-          self.next();
+          setTimeout(function () 
+          {
+            self.setLoading("Initialisation of paths"); 
+            self.next();
+          }, 2500);
         },
         function (error){ self.loading("Unfortunately, an error occured"); });
     });
@@ -89,16 +92,21 @@ var loadingGameView = YoloJS.View.extend({
     // Webcam
     if(Daredevil.navigation == "webcam")
     {
-      $(document).on('eyesClosed', function ()
-      {
+
+      StartTracker();
+
+      var closeEyes = _.debounce(function () {
+
         // Remove event
-        $(document).off('eyesClosed');
+        $(document).off('eyesOpen');
 
         // Game
         Daredevil.router.navigate('/game');
-      });
+      }, 1000);
 
-      setTimeout(function (){ self.setLoading("Close your eyes to start"); }, 2000);
+      $(document).on('eyesOpen', closeEyes);
+
+      setTimeout(function (){ self.setLoading("Maintain your eyes closed to start"); }, 2000);
     }
 
     // Keyboard

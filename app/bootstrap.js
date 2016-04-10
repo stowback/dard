@@ -26,12 +26,12 @@ _.extend(dard.prototype, {
   // Process trigger for faceData of VisageSDK
   process: function (faceData) {
 
-    if (faceData.faceRotation[1] > 0.10) { // Look Left
+    if (faceData.faceRotation[1] > 0.20) { // Look Left
       $.event.trigger({
         type: "lookLeft",
         time: new Date()
       });
-    } else if (faceData.faceRotation[1] <= 0.10 && faceData.faceRotation[1] >= -0.10) { // Look center
+    } else if (faceData.faceRotation[1] <= 0.20 && faceData.faceRotation[1] >= -0.20) { // Look center
       $.event.trigger({
         type: "lookCenter",
         time: new Date()
@@ -103,5 +103,9 @@ var extend = function(protoProps, staticProps) {
 
   return child;
 };
+
+function callbackDownload(){
+  return true;
+}
 
 dard.extend = extend;
